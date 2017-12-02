@@ -17,7 +17,6 @@ import java.sql.*;
 @WebServlet("/TestDbServlet")
 public class TestDbServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -26,38 +25,21 @@ public class TestDbServlet extends HttpServlet {
 		// setup connection variables
 		String user = "root";
 		String pass = "whw";
-		
 		String jdbcUrl = "jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false";
 		String driver = "com.mysql.jdbc.Driver";
 		
 		// get connection to database
 		try {
 			PrintWriter out = response.getWriter();
-			
 			out.println("Connecting to database: " + jdbcUrl);
-			
 			Class.forName(driver);
-			
 			Connection myConn = DriverManager.getConnection(jdbcUrl, user, pass);
-			
 			out.println("SUCCESS!!!");
-			
 			myConn.close();
-			
 		}
 		catch (Exception exc) {
 			exc.printStackTrace();
 			throw new ServletException(exc);
 		}
-	
-	
 	}
-
 }
-
-
-
-
-
-
-
