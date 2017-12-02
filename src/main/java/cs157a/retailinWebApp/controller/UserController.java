@@ -23,57 +23,42 @@ public class UserController {
 
 	@GetMapping("/list")
 	public String listCustomers(Model theModel) {
-		
 		// get customers from the service
 		List<Users> users = userService.getUsers();
-				
 		// add the customers to the model
 		theModel.addAttribute("users", users);
-		
 		return "list-users";
 	}
 	
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
-		
 		// create model attribute to bind form data
 		Users user = new Users();
-		
 		theModel.addAttribute("user", user);
-		
 		return "user-form";
 	}
 	
 	@PostMapping("/saveUser")
 	public String saveUser(@ModelAttribute("user") Users theUser) {
-		
 		// save the customer using our service
 		userService.saveUser(theUser);	
-		
 		return "redirect:/user/list";
 	}
 	
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("employeeID") Integer empID, Model theModel) {
-		
 		// get the customer from our service
 		Users theUser = userService.getUser(empID);	
-		
 		// set customer as a model attribute to pre-populate the form
 		theModel.addAttribute("user", theUser);
-		
 		// send over to our form		
 		return "user-form";
 	}
 	
 	@GetMapping("/delete")
 	public String deleteCustomer(@RequestParam("employeeID") Integer empID) {
-		
 		// delete the customer
 		userService.deleteUser(empID);
-		
 		return "redirect:/user/list";
 	}
-	
-	
 }
