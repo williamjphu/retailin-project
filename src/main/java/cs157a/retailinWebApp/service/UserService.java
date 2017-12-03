@@ -3,7 +3,6 @@ package cs157a.retailinWebApp.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import cs157a.retailinWebApp.entity.Users;
 
 @Service
