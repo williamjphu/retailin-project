@@ -27,12 +27,13 @@
 					<th>Password</th>
 					<th>Email</th>
 					<th>Phone number</th>
+					<th>Enabled</th>
+					<th>Authority</th>
 					<th>Action</th>
 				</tr>
 				
 				<!-- loop over and print our customers -->
 				<c:forEach var="tempUser" items="${users}">
-				
 					<!-- construct an "update" link with customer id -->
 					<c:url var="updateLink2" value="/user/showFormForUpdate">
 						<c:param name="employeeID" value="${tempUser.empID}" />
@@ -42,21 +43,23 @@
 					<c:url var="deleteLink2" value="/user/delete">
 						<c:param name="employeeID" value="${tempUser.empID}" />
 					</c:url>					
-					
+				
 					<tr>
 						<td> ${tempUser.username} </td>
 						<td> ${tempUser.lastName} </td>
 						<td> ${tempUser.firstName} </td>
 						<td> ${tempUser.password} </td>
 						<td> ${tempUser.email} </td>
-						<td> ${tempUser.phoneNumber} </td>					
+						<td> ${tempUser.phoneNumber} </td>
+						<td> ${tempUser.enabled} </td>
+						<td> ${tempUser.authority} </td>
 						<td>
 							<!-- display the update link -->
 							<a href="${updateLink2}">Update</a> |
 							<a href="${deleteLink2}" onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
 						</td>
 					</tr>
-				</c:forEach>	
+				</c:forEach>			
 			</table>	
 		</div>
 	</div>

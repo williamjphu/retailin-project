@@ -14,6 +14,7 @@
 			<h2>ADMIN PAGE</h2>
 		</div>
 	</div>
-	<a href="${pageContext.request.contextPath}/user/list">View/Edit Employee's information</a>
+	<a href="${pageContext.request.contextPath}/user/list">View/Edit Employee's information</a><br>
+	<a href="${pageContext.request.contextPath}/authority/list">View/Edit Employee's authorization</a>
 </body>
 </html>

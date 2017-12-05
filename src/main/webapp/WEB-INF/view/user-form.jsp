@@ -44,6 +44,18 @@
 						<td><form:input path="phoneNumber" /></td>
 					</tr>
 					<tr>
+						<td><label>Enabled:</label>
+						<td><form:input path="enabled" /></td>
+					</tr>
+					<tr>
+						<td><label>ROLE:</label>
+						<td>
+						<form:select path="authority">
+							<form:option value="ROLE_ADMIN">ADMIN</form:option>
+							<form:option value="ROLE_EMPLOYEE">EMPLOYEE</form:option>
+						</form:select>
+					</tr>
+					<tr>
 						<td><label></label></td>
 						<td><input type="submit" value="Save changes" class="save" /></td>
 					</tr>

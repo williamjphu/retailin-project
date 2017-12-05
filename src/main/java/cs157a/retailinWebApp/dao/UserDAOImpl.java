@@ -4,16 +4,18 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+///import cs157a.retailinWebApp.entity.Authorities;
 import cs157a.retailinWebApp.entity.Users;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
 	@Autowired
-	private SessionFactory sessionFactory;
+	private SessionFactory sessionFactory; 
 	
 	@Override
 	public List<Users> getUsers() {
