@@ -3,76 +3,173 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Save User Info</title>
-	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/add-customer-style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RetailIn Employee Information</title>
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
+	rel="stylesheet">
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 </head>
-<body>
-	<div id="wrapper">
-		<div id="header">
-			<h2>RetailIn</h2>
-		</div>
-	</div>
-	<div id="container">
-		<h3>Save User info</h3>
-		<form:form action="saveUser" modelAttribute="user" method="POST">
-			<form:hidden path="empID" />			
-			<table>
-				<tbody>
-					<tr>
-						<td><label>First name:</label></td>
-						<td><form:input path="firstName" /></td>
-					</tr>
-					<tr>
-						<td><label>Last name:</label></td>
-						<td><form:input path="lastName" /></td>
-					</tr>
-					<tr>
-						<td><label>Password:</label></td>
-						<td><form:input path="password" /></td>
-					</tr>
-					<tr>
-						<td><label>Email:</label></td>
-						<td><form:input path="email" /></td>
-					</tr>
-					<tr>
-						<td><label>Phone number:</label></td>
-						<td><form:input path="phoneNumber" /></td>
-					</tr>
-					<tr>
-						<td><label>Enabled:</label>
-						<td><form:input path="enabled" value="1"/></td>
-					</tr>
-					<tr>
-						<td><label>ROLE:</label>
-						<td>
-						<form:select path="authority">
-							<form:option value="ROLE_EMPLOYEE">EMPLOYEE</form:option>
-							<form:option value="ROLE_ADMIN">ADMIN</form:option>
-						</form:select>
-					</tr>
-					<tr>
-						<td><label>ROLE:</label>
-						<td>
-						<form:select path="departmentID">
-							<form:option value="1">Admin</form:option>
-							<form:option value="2">Cashier</form:option>
-							<form:option value="3">Human Resources</form:option>
-							<form:option value="4">Accounting and Finance</form:option>
-						</form:select>
-					</tr>
-					
-					<tr>
-						<td><label></label></td>
-						<td><input type="submit" value="Save changes" class="save" /></td>
-					</tr>
-				</tbody>
-			</table>
-		</form:form>
-		<div style="clear; both;"></div>
-		<p>
-			<a href="${pageContext.request.contextPath}/user/list">Back to List</a>
-		</p>
-	</div>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+    id="mainNav">
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/">RetailIn</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button"
+      data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right"
+          title="Checkout"><a class="nav-link" href="${pageContext.request.contextPath}/cart"> <i
+            class="fa fa-fw fa-shopping-cart"></i> <span class="nav-link-text">Checkout</span>
+        </a></li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right"
+          title="Inventory"><a class="nav-link" href="${pageContext.request.contextPath}/item/list">
+            <i class="fa fa-fw fa-table"></i> <span class="nav-link-text">Inventory</span>
+        </a></li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right"
+          title="Customers"><a class="nav-link" href="${pageContext.request.contextPath}/customer/list"> <i
+            class="fa fa-fw fa-user-circle"></i> <span class="nav-link-text">Customers</span>
+        </a></li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right"
+          title="Employees"><a class="nav-link"
+          href="${pageContext.request.contextPath}/user/list"> <i
+            class="fa fa-fw fa-black-tie"></i> <span class="nav-link-text">Employees</span>
+        </a></li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" data-toggle="modal"
+          data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out"></i>Logout
+        </a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <div class="card card-register mx-auto mt-5">
+        <div class="card-header">Employee Information Form</div>
+          <div class="card-body">
+            <form:form action="saveUser" modelAttribute="user" method="POST">
+              <form:hidden path="empID" />
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-6">
+                    <label for="firstName">First name</label>
+                    <form:input path="firstName" class="form-control" id="firstName" type="text" placeholder="Enter first name" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastName">Last name</label>
+                    <form:input path="lastName" class="form-control" id="lastName" type="text" placeholder="Enter last name" />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-row">
+                	<div class="col-md-14">
+                		<label for="password1">Password</label>
+                    	<form:input path="password" class="form-control" id="password1" type="password" placeholder="Password" />
+                	</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-6">
+                    <label for="firstName">Email</label>
+                    <form:input path="email" class="form-control" id="email" type="text" placeholder="Enter email" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastName">Phone Number</label>
+                    <form:input path="phoneNumber" class="form-control" id="phoneNumber" type="text" placeholder="Enter phone number" />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-4">
+                    <label for="enabled">Enabled</label>
+                    <form:input path="enabled" value="1" class="form-control" id="enabled" type="text" />
+                  </div>
+                  <div class="col-md-4">
+                    <label for="role">Role</label>
+                    <form:select path="authority" class="form-control" id="role">
+                      <form:option value="ROLE_EMPLOYEE">EMPLOYEE</form:option>
+                      <form:option value="ROLE_ADMIN">ADMIN</form:option>
+                    </form:select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="role">Department</label>
+                    <form:select path="departmentID" class="form-control" id="role">
+                      <form:option value="1">Admin</form:option>
+                      <form:option value="2">Cashier</form:option>
+                      <form:option value="3">Human Resources</form:option>
+                      <form:option value="4">Accounting/Finances</form:option>
+                    </form:select>
+                  </div>
+                </div>
+              </div>
+              <input type="submit" value="Apply & Save" class="btn text-white bg-success btn-block" />
+            </form:form>
+            <a href="${pageContext.request.contextPath}/user/list" class="btn btn-secondary btn-block vert-offset-top-1">Back to List</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © RetailIn 2017</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top"> <i
+      class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to
+              Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are
+            ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button"
+              data-dismiss="modal">Cancel</button>
+            <form action="logout" method="POST">
+              <input class="btn btn-primary" type="submit" value="Logout" /> <input
+                type="hidden" name="${_csrf.parameterName}"
+                value="${_csrf.token}" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
