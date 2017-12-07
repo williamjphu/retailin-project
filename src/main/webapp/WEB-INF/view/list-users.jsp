@@ -20,8 +20,8 @@
 		
 			<!--  add our html table here -->
 			<table>
-				<tr>
-					<th>Username</th>		
+				<tr>	
+					<th>RetailIn ID </th>
 					<th>Last Name</th>
 					<th>First Name</th>
 					<th>Password</th>
@@ -29,6 +29,7 @@
 					<th>Phone number</th>
 					<th>Enabled</th>
 					<th>Authority</th>
+					<th>Department ID</th>
 					<th>Action</th>
 				</tr>
 				
@@ -45,7 +46,7 @@
 					</c:url>					
 				
 					<tr>
-						<td> ${tempUser.username} </td>
+						<td> ${tempUser.empID} </td>
 						<td> ${tempUser.lastName} </td>
 						<td> ${tempUser.firstName} </td>
 						<td> ${tempUser.password} </td>
@@ -53,6 +54,7 @@
 						<td> ${tempUser.phoneNumber} </td>
 						<td> ${tempUser.enabled} </td>
 						<td> ${tempUser.authority} </td>
+						<td> ${tempUser.departmentID} </td>
 						<td>
 							<!-- display the update link -->
 							<a href="${updateLink2}">Update</a> |
