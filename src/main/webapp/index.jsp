@@ -13,6 +13,7 @@
 
 <body>
 	<h1>This is the home page!</h1>
+	<a href="${pageContext.request.contextPath}/admin">Go to Admin page</a>
 	<a href="${pageContext.request.contextPath}/user/list">Go to user list</a>
 
 	<h3>Your RetailIn ID: <sec:authentication property="principal.username" /> </h3>

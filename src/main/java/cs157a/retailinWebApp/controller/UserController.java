@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cs157a.retailinWebApp.dao.DepartmentDAO;
+import cs157a.retailinWebApp.entity.Department;
 import cs157a.retailinWebApp.entity.Users;
 import cs157a.retailinWebApp.service.UserService;
 
@@ -21,6 +23,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired 
+	private DepartmentDAO departmentDAO;
+	
 	@GetMapping("/list")
 	public String listCustomers(Model theModel) {
 		// get customers from the service
@@ -35,13 +40,17 @@ public class UserController {
 		// create model attribute to bind form data
 		Users user = new Users();
 		theModel.addAttribute("user", user);
+		
+		List<Department> departments = departmentDAO.getDepartments();
+		theModel.addAttribute("departments", departments);
+		
 		return "user-form";
 	}
 	
 	@PostMapping("/saveUser")
-	public String saveUser(@ModelAttribute("user") Users theUser) {
-		// save the customer using our service
-		userService.saveUser(theUser);	
+	//public String saveUser(@ModelAttribute("user") Users theUser) {
+	public String saveUser(Integer deptID, @ModelAttribute("user") Users theUser) { 
+		userService.saveUser(deptID, theUser);
 		return "redirect:/user/list";
 	}
 	
@@ -51,7 +60,10 @@ public class UserController {
 		Users theUser = userService.getUser(empID);	
 		// set customer as a model attribute to pre-populate the form
 		theModel.addAttribute("user", theUser);
-		// send over to our form		
+		
+		List<Department> departments = departmentDAO.getDepartments();
+		theModel.addAttribute("departments", departments);
+	
 		return "user-form";
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cs157a.retailinWebApp.dao.UserDAO;
+import cs157a.retailinWebApp.entity.Department;
 import cs157a.retailinWebApp.entity.Users;
 
 @Service
@@ -23,8 +24,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public void saveUser(Users user) {
-		userDao.saveUser(user);
+	public void saveUser(Integer deptID, Users user) {
+		userDao.saveUser(deptID, user);
 	}
 
 	@Override

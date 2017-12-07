@@ -1,14 +1,14 @@
 package cs157a.retailinWebApp.entity;
 
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -40,10 +40,24 @@ public class Users {
 	
 	@Column(name="authority") 
 	private String authority;
-	
-	@Column(name="department_id")
-	private int departmentID;
-	
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="department_id", referencedColumnName="department_id")
+	private Department department;
+
+//	@Column(name="department_id")
+//	private String department;
+//	@Column(name="department_id")
+//	private int deptaID;
+//	
+//	public int getDeptaID() {
+//		return deptaID;
+//	}
+
+//	public void setDeptaID(int deptID) {
+//		this.deptaID = deptID;
+//	}
+
 	public Users() {
 		// TODO Auto-generated constructor stub
 	}
@@ -57,6 +71,17 @@ public class Users {
 		this.enabled = enabled;
 		this.authority = authority;
 	}
+	
+	public Users(String lastName, String firstName, String password, String email, String phoneNumber, int enabled, String authority, Department dept) {//, String authority) {
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.password = password;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.enabled = enabled;
+		this.authority = authority;
+		this.department = dept;
+	}
 
 	public int getEmpID() {
 		return empID;
@@ -65,14 +90,6 @@ public class Users {
 	public void setEmpID(int empID) {
 		this.empID = empID;
 	}
-
-//	public String getUsername() {
-//		return username;
-//	}
-//
-//	public void setUsername(String username) {
-//		this.username = username;
-//	}
 
 	public String getLastName() {
 		return lastName;
@@ -130,17 +147,22 @@ public class Users {
 		this.authority = authority;
 	}
 
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}	
+	
 	public int getDepartmentID() {
-		return departmentID;
+		return department.getDepartmentID();
 	}
-
-	public void setDepartmentID(int departmentID) {
-		this.departmentID = departmentID;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Users [username=" + empID + ", lastName=" + lastName + ", firstName=" + firstName + ", password="
 				+ password + ", email=" + email + ", phoneNumber=" + phoneNumber + ", enabled=" + enabled + "]";
 	}
+
 }

@@ -26,7 +26,7 @@
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
+    
     <!-- Step 1: Define Database DataSource / connection pool -->
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
@@ -45,6 +45,12 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>cs157a.retailinWebApp.entity.Department</value>
+				<value>cs157a.retailinWebApp.entity.Users</value>
+			</list>
+		</property>
 		<property name="packagesToScan" value="cs157a.retailinWebApp.entity" />
 		<property name="hibernateProperties">
 		   <props>

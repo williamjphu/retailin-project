@@ -15,6 +15,6 @@
 		</div>
 	</div>
 	<a href="${pageContext.request.contextPath}/user/list">View/Edit Employee's information</a><br>
-	<a href="${pageContext.request.contextPath}/authority/list">View/Edit Employee's authorization</a>
+	<a href="${pageContext.request.contextPath}/department/list">View/Edit Department's information</a>
 </body>
 </html>

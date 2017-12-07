@@ -54,7 +54,7 @@
 						<td> ${tempUser.phoneNumber} </td>
 						<td> ${tempUser.enabled} </td>
 						<td> ${tempUser.authority} </td>
-						<td> ${tempUser.departmentID} </td>
+						<td> ${tempUser.department.getDepartmentID()} </td>
 						<td>
 							<!-- display the update link -->
 							<a href="${updateLink2}">Update</a> |
