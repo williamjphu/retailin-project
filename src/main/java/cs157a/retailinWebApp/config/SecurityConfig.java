@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// Provide the routing depending on the authentication
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/login").permitAll()
+				.antMatchers("/login", "/resources/**").permitAll()
 				.antMatchers("/admin", "/user/*").hasRole("ADMIN")
 					.anyRequest().authenticated()
 					.and()

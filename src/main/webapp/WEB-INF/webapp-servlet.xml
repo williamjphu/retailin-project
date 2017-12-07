@@ -31,9 +31,9 @@
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/retailinWebAppDB?useSSL=false" />
-        <property name="user" value="retailinDB" />
-        <property name="password" value="retailin123pass" /> 
+        <property name="jdbcUrl" value="jdbc:mysql://google/retailinWebAppDB?socketFactory=com.google.cloud.sql.mysql.SocketFactory&amp;cloudSqlInstance=retailindb:us-central1:retailin" />
+        <property name="user" value="retailin" />
+        <property name="password" value="retailin123" /> 
 
         <!-- these are connection pool properties for C3P0 -->
         <property name="minPoolSize" value="5" />
