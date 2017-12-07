@@ -1,9 +1,3 @@
--- CREATE USER 'reitailnDB'@'localhost' IDENTIFIED BY 'retailinDB'
--- GRANT ALL ON retailinWebAppDB.* TO 'retailinDB'@'localhost'
-
--- Use user 'retailinDB'
--- Use pass 'retailinDB'
-
 DROP DATABASE IF EXISTS retailinWebAppDB;
 CREATE DATABASE IF NOT EXISTS retailinWebAppDB;
 USE retailinWebAppDB;
@@ -15,7 +9,7 @@ DROP TABLE IF EXISTS departments;
 CREATE TABLE departments(
 	department_id int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     department_name varchar(32) NOT NULL,
-    department_additional varchar(64) DEFAULT 'None',
+    additional varchar(64) DEFAULT 'None',
     KEY(department_id)
 ) AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -38,7 +32,7 @@ CREATE TABLE users (
 ) AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- INSERT DEFAULT DATA
-LOCK TABLES users WRITE;
+LOCK TABLES departments WRITE;
 	INSERT INTO departments(department_name) values("Admin");
 UNLOCK TABLES;
 
