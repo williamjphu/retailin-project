@@ -29,7 +29,7 @@
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
 		id="mainNav">
-		<a class="navbar-brand" href="index.html">RetailIn</a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/">RetailIn</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navbarResponsive"
 			aria-controls="navbarResponsive" aria-expanded="false"
@@ -39,15 +39,15 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Checkout"><a class="nav-link" href="charts.html"> <i
+					title="Checkout"><a class="nav-link" href="${pageContext.request.contextPath}/cart"> <i
 						class="fa fa-fw fa-shopping-cart"></i> <span class="nav-link-text">Checkout</span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Inventory"><a class="nav-link" href="tables.html">
+					title="Inventory"><a class="nav-link" href="${pageContext.request.contextPath}/item/list">
 						<i class="fa fa-fw fa-table"></i> <span class="nav-link-text">Inventory</span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Customers"><a class="nav-link" href="#"> <i
+					title="Customers"><a class="nav-link" href="${pageContext.request.contextPath}/customer/list"> <i
 						class="fa fa-fw fa-user-circle"></i> <span class="nav-link-text">Customers</span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
@@ -76,7 +76,7 @@
 				</div>
 				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
 					<div class="card text-white bg-primary o-hidden h-100">
-						<a href="#" class="text-white">
+						<a href="${pageContext.request.contextPath}/cart" class="text-white">
 							<div class="card-body">
 								<div class="card-body-icon">
 									<i class="fa fa-fw fa-shopping-cart"></i>
@@ -93,7 +93,7 @@
 				</div>
 				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
 					<div class="card text-white bg-warning o-hidden h-100">
-						<a href="#" class="text-white">
+						<a href="${pageContext.request.contextPath}/item/list" class="text-white">
 							<div class="card-body">
 								<div class="card-body-icon">
 									<i class="fa fa-fw fa-table"></i>
@@ -110,7 +110,7 @@
 				</div>
 				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
 					<div class="card text-white bg-success o-hidden h-100">
-						<a href="#" class="text-white">
+						<a href="${pageContext.request.contextPath}/customer/list" class="text-white">
 							<div class="card-body">
 								<div class="card-body-icon">
 									<i class="fa fa-fw fa-user-circle"></i>
