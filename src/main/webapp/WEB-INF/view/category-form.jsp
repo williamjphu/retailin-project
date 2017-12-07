@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -47,11 +48,13 @@
           title="Customers"><a class="nav-link" href="${pageContext.request.contextPath}/customer/list"> <i
             class="fa fa-fw fa-user-circle"></i> <span class="nav-link-text">Customers</span>
         </a></li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right"
-          title="Employees"><a class="nav-link"
-          href="${pageContext.request.contextPath}/user/list"> <i
-            class="fa fa-fw fa-black-tie"></i> <span class="nav-link-text">Employees</span>
-        </a></li>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+	        <li class="nav-item" data-toggle="tooltip" data-placement="right"
+	          title="Employees"><a class="nav-link"
+	          href="${pageContext.request.contextPath}/user/list"> <i
+	            class="fa fa-fw fa-black-tie"></i> <span class="nav-link-text">Employees</span>
+	        </a></li>
+        </sec:authorize>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link" data-toggle="modal"
