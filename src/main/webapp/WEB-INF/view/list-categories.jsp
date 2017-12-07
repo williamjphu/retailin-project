@@ -67,51 +67,43 @@
     <div class="container-fluid">
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Item Data</div>
+          <i class="fa fa-table"></i>Categories Data</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-     				<th>Item name</th>
-					<th>Description</th>
-					<th>Price</th>
-					<th>Discount</th>
-					<th>Quantity</th>
-					<th>Category id</th>
-					<th>Action</th>
+                  <th>Category name</th>
+                  <th>Category description</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <c:forEach var="tempItem" items="${items}">
+                <c:forEach var="tempCategory" items="${categories}">
                   <!-- construct an "update" link with customer id -->
-                  <c:url var="updateLink2" value="/item/showFormForUpdate">
-                    <c:param name="itemId" value="${tempItem.itemName}" />
+                  <c:url var="updateLink2" value="/category/showFormForUpdate">
+                    <c:param name="categoryID" value="${tempCategory.categoryID}" />
                   </c:url>          
 
                   <!-- construct an "delete" link with customer id -->
-                  <c:url var="deleteLink2" value="/item/delete">
-                    <c:param name="itemId" value="${tempItem.itemName}" />
+                  <c:url var="deleteLink2" value="/category/delete">
+                    <c:param name="categoryID" value="${tempCategory.categoryID}" />
                   </c:url>          
                 
                   <tr>
-					<td> ${tempItem.itemName} </td>
-					<td> ${tempItem.description} </td>
-					<td> ${tempItem.price} </td>
-					<td> ${tempItem.discount} </td>
-					<td> ${tempItem.quantity} </td>
-					<td> ${tempItem.categoryID} </td>
+                    <td> ${tempCategory.name} </td>
+                    <td> ${tempCategory.description} </td>
                     <td>
                       <!-- display the update link -->
                       <a href="${updateLink2}">Update</a> |
-                      <a href="${deleteLink2}" onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
+                      <a href="${deleteLink2}" onclick="if (!(confirm('Are you sure you want to delete this cateogry?'))) return false">Delete</a>
                     </td>
                   </tr>
                 </c:forEach>
               </tbody>
             </table>
           </div>
-          <input type="button" value="Add Item" onclick="window.location.href='showFormForAdd'; return false;" class="btn bg-success text-white"/>
+          <input type="button" value="Add Category" onclick="window.location.href='formAdd'; return false;" class="btn bg-success text-white"/>
         </div>
       </div>
     </div>

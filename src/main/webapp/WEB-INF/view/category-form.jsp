@@ -1,11 +1,11 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Home</title>
+<title>RetailIn Employee Information</title>
 <link
 	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -65,53 +65,27 @@
   </nav>
   <div class="content-wrapper">
     <div class="container-fluid">
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-table"></i> Item Data</div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-     				<th>Item name</th>
-					<th>Description</th>
-					<th>Price</th>
-					<th>Discount</th>
-					<th>Quantity</th>
-					<th>Category id</th>
-					<th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <c:forEach var="tempItem" items="${items}">
-                  <!-- construct an "update" link with customer id -->
-                  <c:url var="updateLink2" value="/item/showFormForUpdate">
-                    <c:param name="itemId" value="${tempItem.itemName}" />
-                  </c:url>          
-
-                  <!-- construct an "delete" link with customer id -->
-                  <c:url var="deleteLink2" value="/item/delete">
-                    <c:param name="itemId" value="${tempItem.itemName}" />
-                  </c:url>          
-                
-                  <tr>
-					<td> ${tempItem.itemName} </td>
-					<td> ${tempItem.description} </td>
-					<td> ${tempItem.price} </td>
-					<td> ${tempItem.discount} </td>
-					<td> ${tempItem.quantity} </td>
-					<td> ${tempItem.categoryID} </td>
-                    <td>
-                      <!-- display the update link -->
-                      <a href="${updateLink2}">Update</a> |
-                      <a href="${deleteLink2}" onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
-                    </td>
-                  </tr>
-                </c:forEach>
-              </tbody>
-            </table>
+      <div class="card card-register mx-auto mt-5">
+        <div class="card-header">Category Information Form</div>
+          <div class="card-body">
+            <form:form action="saveCategory" modelAttribute="theCategory" method="POST">
+              <form:hidden path="categoryID" />
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-6">
+                    <label for="name">Category name</label>
+                    <form:input path="name" class="form-control" id="name" type="text" placeholder="Enter category name" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="description">Description</label>
+                    <form:input path="description" class="form-control" id="description" type="text" placeholder="Enter description" />
+                  </div>
+                </div>
+              </div>
+              <input type="submit" value="Apply & Save" class="btn text-white bg-success btn-block" />
+            </form:form>
+            <a href="${pageContext.request.contextPath}/category/list" class="btn btn-secondary btn-block vert-offset-top-1">Back to List</a>
           </div>
-          <input type="button" value="Add Item" onclick="window.location.href='showFormForAdd'; return false;" class="btn bg-success text-white"/>
         </div>
       </div>
     </div>
