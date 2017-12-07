@@ -112,6 +112,7 @@
             </table>
           </div>
           <input type="button" value="Add Item" onclick="window.location.href='showFormForAdd'; return false;" class="btn bg-success text-white"/>
+          <a href="${pageContext.request.contextPath}/category/list" class="btn bg-success text-white">Go to Categories</a>
         </div>
       </div>
     </div>
