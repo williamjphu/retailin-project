@@ -1,4 +1,4 @@
-jdbc:mysql://localhost:3306/retailinWebAppDB?useSSL=false<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>

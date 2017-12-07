@@ -81,7 +81,7 @@
               </div>
               <div class="form-group">
                 <div class="form-row">
-                	<div class="col-md-14">
+                	<div class="col-md-6">
                 		<label for="password1">First Name</label>
                     	<form:input path="firstName" class="form-control" id="firstName" type="text" placeholder="Enter first name" />
                 	</div>
