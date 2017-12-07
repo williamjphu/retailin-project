@@ -15,8 +15,8 @@
 	<h1>This is the home page!</h1>
 	<a href="${pageContext.request.contextPath}/user/list">Go to user list</a>
 
-	<h3>Your username is: <sec:authentication property="principal.username" /> </h3>
-	<h3>Your role is: <sec:authentication property="principal.authorities"/> </h3>
+	<h3>Your RetailIn ID: <sec:authentication property="principal.username" /> </h3>
+	<h3>Your Role: <sec:authentication property="principal.authorities"/> </h3>
 	<form action="logout" method="POST">
 		<input type="submit" value="Logout" />
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

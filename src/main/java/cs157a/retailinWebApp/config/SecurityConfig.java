@@ -29,22 +29,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		auth.inMemoryAuthentication()
 //			.withUser("user2").password("user2").roles("EMPLOYEE");
 		auth.jdbcAuthentication().dataSource(myDataSource);
-//		List<GrantedAuthority> authorities = new ArrayList<>();
-//		authorities.add(new SimpleGrantedAuthority("ROLE_EMPLOYEE")); 
-//		SecurityContextHolder.getContext().setAuthentication(
-//		        new UsernamePasswordAuthenticationToken(
-//		            SecurityContextHolder.getContext().getAuthentication().getPrincipal(),
-//		            SecurityContextHolder.getContext().getAuthentication().getCredentials(),
-//		            authorities)
-//		        );
 	}
 
 	// Provide the routing depending on the authentication
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-//				.antMatchers("/user/showFormForAdd").permitAll()
 				.antMatchers("/login").permitAll()
-				.antMatchers("/admin").hasRole("ADMIN")
+				.antMatchers("/admin", "/user/*").hasRole("ADMIN")
 					.anyRequest().authenticated()
 					.and()
 			.formLogin()
