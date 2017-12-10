@@ -72,13 +72,12 @@
 			<div class="card card-register mx-auto mt-5">
 				<div class="card-header">Customer Information Form</div>
 				<div class="card-body">
-					<form:form action="saveCustomer" modelAttribute="customer"
-						method="POST">
-						<%--  <form:hidden path="customer" /> --%>
+					<form:form action="save" modelAttribute="customerForm" method="POST">
+						<form:hidden path="customerID" />
 						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-6">
-									<label for="firstName">Phone number</label>
+									<label for="phoneNumber">Phone number</label>
 									<form:input path="phoneNumber" class="form-control"
 										id="phoneNumber" type="text"
 										placeholder="Enter your phone number" />
@@ -92,13 +91,13 @@
 						</div>
 						<div class="form-group">
 							<div class="form-row">
-								<div class="col-md-6">
-									<label for="password1">First Name</label>
+								<div class="col-md-14">
+									<label for="firstName">First Name</label>
 									<form:input path="firstName" class="form-control"
 										id="firstName" type="text" placeholder="Enter first name" />
 								</div>
 								<div class="col-md-6">
-									<label for="lastName">Zip Code</label>
+									<label for="zipCode">Zip Code</label>
 									<form:input path="zipCode" class="form-control" id="zipCode"
 										type="text" placeholder="Enter zipcode" />
 								</div>
@@ -129,7 +128,7 @@
 	<footer class="sticky-footer">
 		<div class="container">
 			<div class="text-center">
-				<small>Copyright © RetailIn 2017</small>
+				<small>Copyright Â© RetailIn 2017</small>
 			</div>
 		</div>
 	</footer>
@@ -146,7 +145,7 @@
 					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">×</span>
+						<span aria-hidden="true">Ã—</span>
 					</button>
 				</div>
 				<div class="modal-body">Select "Logout" below if you are ready
