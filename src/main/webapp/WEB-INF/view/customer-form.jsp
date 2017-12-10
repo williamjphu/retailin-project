@@ -128,7 +128,7 @@
 	<footer class="sticky-footer">
 		<div class="container">
 			<div class="text-center">
-				<small>Copyright © RetailIn 2017</small>
+				<small>Copyright Â© RetailIn 2017</small>
 			</div>
 		</div>
 	</footer>
@@ -145,7 +145,7 @@
 					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">×</span>
+						<span aria-hidden="true">Ã—</span>
 					</button>
 				</div>
 				<div class="modal-body">Select "Logout" below if you are ready

@@ -39,22 +39,27 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Checkout"><a class="nav-link" href="${pageContext.request.contextPath}/cart"> <i
+					title="Checkout"><a class="nav-link"
+					href="${pageContext.request.contextPath}/cart"> <i
 						class="fa fa-fw fa-shopping-cart"></i> <span class="nav-link-text">Checkout</span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Inventory"><a class="nav-link" href="${pageContext.request.contextPath}/item/list">
-						<i class="fa fa-fw fa-table"></i> <span class="nav-link-text">Inventory</span>
+					title="Inventory"><a class="nav-link"
+					href="${pageContext.request.contextPath}/item/list"> <i
+						class="fa fa-fw fa-table"></i> <span class="nav-link-text">Inventory</span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Customers"><a class="nav-link" href="${pageContext.request.contextPath}/customer/list"> <i
+					title="Customers"><a class="nav-link"
+					href="${pageContext.request.contextPath}/customer/list"> <i
 						class="fa fa-fw fa-user-circle"></i> <span class="nav-link-text">Customers</span>
 				</a></li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Employees"><a class="nav-link"
-					href="${pageContext.request.contextPath}/user/list"> <i
-						class="fa fa-fw fa-black-tie"></i> <span class="nav-link-text">Employees</span>
-				</a></li>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<li class="nav-item" data-toggle="tooltip" data-placement="right"
+						title="Employees"><a class="nav-link"
+						href="${pageContext.request.contextPath}/user/list"> <i
+							class="fa fa-fw fa-black-tie"></i> <span class="nav-link-text">Employees</span>
+					</a></li>
+				</sec:authorize>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link" data-toggle="modal"
@@ -76,7 +81,8 @@
 				</div>
 				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
 					<div class="card text-white bg-primary o-hidden h-100">
-						<a href="${pageContext.request.contextPath}/cart" class="text-white">
+						<a href="${pageContext.request.contextPath}/cart"
+							class="text-white">
 							<div class="card-body">
 								<div class="card-body-icon">
 									<i class="fa fa-fw fa-shopping-cart"></i>
@@ -93,7 +99,8 @@
 				</div>
 				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
 					<div class="card text-white bg-warning o-hidden h-100">
-						<a href="${pageContext.request.contextPath}/item/list" class="text-white">
+						<a href="${pageContext.request.contextPath}/item/list"
+							class="text-white">
 							<div class="card-body">
 								<div class="card-body-icon">
 									<i class="fa fa-fw fa-table"></i>
@@ -110,7 +117,8 @@
 				</div>
 				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
 					<div class="card text-white bg-success o-hidden h-100">
-						<a href="${pageContext.request.contextPath}/customer/list" class="text-white">
+						<a href="${pageContext.request.contextPath}/customer/list"
+							class="text-white">
 							<div class="card-body">
 								<div class="card-body-icon">
 									<i class="fa fa-fw fa-user-circle"></i>
@@ -125,24 +133,26 @@
 						</a>
 					</div>
 				</div>
-				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
-					<div class="card text-white bg-danger o-hidden h-100">
-						<a href="${pageContext.request.contextPath}/user/list"
-							class="text-white">
-							<div class="card-body">
-								<div class="card-body-icon">
-									<i class="fa fa-fw fa-black-tie"></i>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
+						<div class="card text-white bg-danger o-hidden h-100">
+							<a href="${pageContext.request.contextPath}/user/list"
+								class="text-white">
+								<div class="card-body">
+									<div class="card-body-icon">
+										<i class="fa fa-fw fa-black-tie"></i>
+									</div>
+									<div class="mr-5">EMPLOYEES</div>
 								</div>
-								<div class="mr-5">EMPLOYEES</div>
-							</div>
-							<div class="card-footer clearfix small z-1">
-								<span class="float-left">Manage employee information</span> <span
-									class="float-right"> <i class="fa fa-angle-right"></i>
-								</span>
-							</div>
-						</a>
+								<div class="card-footer clearfix small z-1">
+									<span class="float-left">Manage employee information</span> <span
+										class="float-right"> <i class="fa fa-angle-right"></i>
+									</span>
+								</div>
+							</a>
+						</div>
 					</div>
-				</div>
+				</sec:authorize>
 			</div>
 			<!-- Area Chart Example-->
 		</div>
