@@ -91,7 +91,8 @@ CREATE TABLE bank_accounts (
 -- Many receipts are issued by one user
 DROP TABLE IF EXISTS customers;
 CREATE TABLE customers (
-	phone_number int(12) NOT NULL PRIMARY KEY,
+	customer_id int(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	phone_number int(12) NOT NULL,
     first_name varchar(32) NOT NULL,
 	last_name varchar(32) NOT NULL,
 	email varchar(54) NOT NULL,
@@ -107,9 +108,9 @@ CREATE TABLE receipts (
     total int(20) NOT NULL,
     receipt_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     emp_id int(8) ZEROFILL NOT NULL,
-    cust_phone int(12) NOT NULL,
+    customer_id int(5) NOT NULL,
     CONSTRAINT fk_receipts_users FOREIGN KEY(emp_id) REFERENCES users(username),
-    CONSTRAINT fk_receipts_customers FOREIGN KEY(cust_phone) REFERENCES customers(phone_number)
+    CONSTRAINT fk_receipts_customers FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
 ) DEFAULT CHARSET=utf8;
 
 -- Table for Categories
@@ -124,7 +125,7 @@ CREATE TABLE categories (
 -- 
 -- Table for Items
 -- Details: ManyToMany
--- Many receipts are in many items
+Many receipts are in many items
 DROP TABLE IF EXISTS items;
 CREATE TABLE items (
     item_name varchar(32) NOT NULL PRIMARY KEY,
@@ -142,11 +143,11 @@ CREATE TABLE items (
 DROP TABLE IF EXISTS is_in;
 CREATE TABLE is_in (
 	transaction_no int(5) NOT NULL,
-	item_name varchar(32) NOT NULL,
+	item_id int(5) NOT NULL,
 	quantity int(5) NOT NULL,
-	PRIMARY KEY(transaction_no, item_name),
+	PRIMARY KEY(transaction_no, item_id),
 	CONSTRAINT fk_isIn_receipts FOREIGN KEY(transaction_no) REFERENCES receipts(transaction_no),
-	CONSTRAINT fk_isIn_items FOREIGN KEY(item_name) REFERENCES items(item_name)
+	CONSTRAINT fk_isIn_items FOREIGN KEY(item_id) REFERENCES items(item_id)
 ) DEFAULT CHARSET=utf8;
 
 -- Table for Vendor
@@ -166,11 +167,11 @@ CREATE TABLE vendor (
 DROP TABLE IF EXISTS vend;
 CREATE TABLE vend (
 	ein int(8) NOT NULL,
-    item_name varchar(32) NOT NULL,
+    item_id int(5) NOT NULL,
     date varchar(20) NOT NULL,
     quantity int(5) NULL,
 	vendor_price int(5) NOT NULL,
-    PRIMARY KEY(ein, item_name),
+    PRIMARY KEY(ein, item_id),
     CONSTRAINT fk_vend_vendors FOREIGN KEY(ein) REFERENCES vendor(ein),
-    CONSTRAINT fk_vend_items FOREIGN KEY(item_name) REFERENCES items(item_name)
+    CONSTRAINT fk_vend_items FOREIGN KEY(item_id) REFERENCES items(item_id)
 ) DEFAULT CHARSET=utf8;
