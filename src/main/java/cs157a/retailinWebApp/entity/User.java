@@ -1,47 +1,14 @@
 package cs157a.retailinWebApp.entity;
 
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-//@Entity
-//@Table(name="users")
 public class User {
-
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
-//	@Column(name="username")
 	public int empID;
-	
-//	@Column(name="last_name")
 	private String lastName;
-	
-//	@Column(name="first_name")
 	private String firstName;	
-	
-//	@Column(name="password")
 	private String password;
-	
-//	@Column(name="email")
 	private String email;
-	
-//	@Column(name="phone_number")
 	private String phoneNumber;
-	
-//	@Column(name="enabled")
-	private int enabled;
-	
-//	@Column(name="authority") 
+	private int enabled; 
 	private String authority;
-	
-//	@Column(name="department_id")
 	private int departmentID;
 	
 	public User() {
@@ -52,16 +19,6 @@ public class User {
 		this.empID = empID;
 	}
 	
-	public User(String lastName, String firstName, String password, String email, String phoneNumber, int enabled, String authority) {//, String authority) {
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.password = password;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.enabled = enabled;
-		this.authority = authority;
-	}
-
 	public int getEmpID() {
 		return empID;
 	}
@@ -132,11 +89,5 @@ public class User {
 
 	public void setDepartmentID(int departmentID) {
 		this.departmentID = departmentID;
-	}
-
-	@Override
-	public String toString() {
-		return "Users [username=" + empID + ", lastName=" + lastName + ", firstName=" + firstName + ", password="
-				+ password + ", email=" + email + ", phoneNumber=" + phoneNumber + ", enabled=" + enabled + "]";
 	}
 }

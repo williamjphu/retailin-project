@@ -80,6 +80,7 @@
 							cellspacing="0">
 							<thead>
 								<tr>
+									<th>Item ID</th>
 									<th>Item name</th>
 									<th>Description</th>
 									<th>Price</th>
@@ -93,15 +94,16 @@
 								<c:forEach var="item" items="${listItems}">
 									<!-- construct an "update" link with customer id -->
 									<c:url var="updateURL" value="/item/update">
-										<c:param name="itemId" value="${item.itemName}" />
+										<c:param name="itemId" value="${item.itemID}" />
 									</c:url>
 
 									<!-- construct an "delete" link with customer id -->
 									<c:url var="deleteURL" value="/item/delete">
-										<c:param name="itemId" value="${item.itemName}" />
+										<c:param name="itemId" value="${item.itemID}" />
 									</c:url>
 
 									<tr>
+										<td>${item.itemID}</td>
 										<td>${item.itemName}</td>
 										<td>${item.description}</td>
 										<td>${item.price}</td>

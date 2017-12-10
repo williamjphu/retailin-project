@@ -52,6 +52,8 @@ public class UserDAOImpl implements UserDAO {
 		String sql = "INSERT INTO users(username, last_name, first_name, password, email, phone_number, enabled, authority, department_id) "
 				+ "VALUES(:username, :last_name, :first_name, :password, :email, :phone_number, :enabled, :authority, :department_id)";
 		namedParameter.update(sql, getSqlParameterByModel(user));
+		String sql2 = "INSERT INTO authorites(username, authority) VALUES(:username, :authority)";
+		namedParameter.update(sql2, getSqlParameterByModel(user));
 	}
 	
 	@Override
@@ -60,6 +62,8 @@ public class UserDAOImpl implements UserDAO {
 				+ "phone_number = :phone_number, enabled = :enabled, authority = :authority, department_id = :department_id "
 				+ "WHERE username = :username";
 		namedParameter.update(sql, getSqlParameterByModel(user));
+		String sql2 = "UPDATE authorities SET authority = :authority WHERE username = :username";
+		namedParameter.update(sql2, getSqlParameterByModel(user));
 	}
 
 	@Override

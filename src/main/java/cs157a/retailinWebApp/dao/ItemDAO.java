@@ -8,6 +8,6 @@ public interface ItemDAO {
 	public List<Item> getItems();
 	public void addItem(Item item);
 	public void updateItem(Item item);
-	public void deleteItem(String itemName);
-	public Item findItemById(String itemName);
+	public void deleteItem(int itemId);
+	public Item findItemById(int itemId);
 }

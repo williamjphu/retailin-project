@@ -1,48 +1,28 @@
 package cs157a.retailinWebApp.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-//@Entity
-//@Table(name="items")
 public class Item {
-	
-//	@Id
-//	@Column(name="item_name")
+	private int itemID;
 	private String itemName;
-	
-//	@Column(name="description")
 	private String description;
-	
-//	@Column(name="price")
 	private int price;
-	
-//	@Column(name="discount")
 	private int discount;
-	
-//	@Column(name="quantity")
 	private int quantity;
-	
-//	@Column(name="category_id")
 	private int categoryID;
 	
 	public Item() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Item(String itemName) {
-		this.itemName = itemName;
+	public Item(int itemID) {
+		this.itemID = itemID;
 	}
 
-	public Item(String itemName, String description, int price, int discount, int quantity, int categoryID) {
-		this.itemName = itemName;
-		this.description = description;
-		this.price = price;
-		this.discount = discount;
-		this.quantity = quantity;
-		this.categoryID = categoryID;
+	public int getItemID() {
+		return itemID;
+	}
+
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public String getItemName() {
