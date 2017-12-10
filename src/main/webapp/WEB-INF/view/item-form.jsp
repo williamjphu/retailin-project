@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -68,8 +69,8 @@
       <div class="card card-register mx-auto mt-5">
         <div class="card-header">Item Information Form</div>
           <div class="card-body">
-            <form:form action="saveItem" modelAttribute="itemss" method="POST">
-              <form:hidden path="itemName" />
+            <form:form action="save" modelAttribute="itemss" method="POST">
+           <%--    <form:hidden path="itemName" /> --%>
               <div class="form-group">
                 <div class="form-row">
                   <div class="col-md-6">

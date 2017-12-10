@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cs157a.retailinWebApp.dao.UserDAO;
-import cs157a.retailinWebApp.entity.Users;
+import cs157a.retailinWebApp.entity.User;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,27 +16,27 @@ public class UserServiceImpl implements UserService {
 	private UserDAO userDao;
 	
 	@Override
-	@Transactional
-	public List<Users> getUsers() {
+	public List<User> getUsers() {
 		return userDao.getUsers();
 	}
 
 	@Override
-	@Transactional
-	public void saveUser(Users user) {
-		userDao.saveUser(user);
+	public void addUser(User user) {
+		userDao.addUser(user);
 	}
 
 	@Override
-	@Transactional
-	public Users getUser(Integer empID) {
-		return userDao.getUser(empID);
+	public void updateUser(User user) {
+		userDao.updateUser(user);
 	}
-
+	
 	@Override
-	@Transactional
 	public void deleteUser(Integer empID) {
 		userDao.deleteUser(empID);
 	}
-
+	
+	@Override
+	public User getUserById(Integer empID) {
+		return userDao.getUserById(empID);
+	}
 }

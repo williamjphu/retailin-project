@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -72,7 +71,7 @@
 		<div class="container-fluid">
 			<div class="card mb-3">
 				<div class="card-header">
-					<i class="fa fa-table"></i> Item Data
+					<i class="fa fa-table"></i>Categories Data
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
@@ -80,51 +79,41 @@
 							cellspacing="0">
 							<thead>
 								<tr>
-									<th>Item name</th>
+									<th>Department ID</th>
+									<th>Department Name</th>
 									<th>Description</th>
-									<th>Price</th>
-									<th>Discount</th>
-									<th>Quantity</th>
-									<th>Category id</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="item" items="${listItems}">
+								<c:forEach var="dept" items="${departments}">
 									<!-- construct an "update" link with customer id -->
-									<c:url var="updateURL" value="/item/update">
-										<c:param name="itemId" value="${item.itemName}" />
+									<c:url var="updateURL" value="/department/update">
+										<c:param name="deptId" value="${dept.deptID}" />
 									</c:url>
 
 									<!-- construct an "delete" link with customer id -->
-									<c:url var="deleteURL" value="/item/delete">
-										<c:param name="itemId" value="${item.itemName}" />
+									<c:url var="deleteURL" value="/category/delete">
+										<c:param name="deptId" value="${dept.deptID}" />
 									</c:url>
 
 									<tr>
-										<td>${item.itemName}</td>
-										<td>${item.description}</td>
-										<td>${item.price}</td>
-										<td>${item.discount}</td>
-										<td>${item.quantity}</td>
-										<td>${item.categoryID}</td>
+										<td>${dept.deptID}</td>
+										<td>${dept.name}</td>
+										<td>${dept.description}</td>
 										<td>
-											<!-- display the update link --> <%-- <spring:url value="/item/update/${item.itemName}" var="updateURL" /> --%>
-											<a href="${updateURL}">Update</a> | <%--                       <spring:url value="/item/delete/${item.itemName}" var="deleteURL" /> --%>
-											<a href="${deleteURL}"
-											onclick="if (!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a>
+											<!-- display the update link --> <a href="${updateURL}">Update</a>
+											| <a href="${deleteURL}"
+											onclick="if (!(confirm('Are you sure you want to delete this department?'))) return false">Delete</a>
 										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
 					</div>
-					<%--  <spring:url value="/item/add" var="addURL" /> --%>
-					<input type="button" value="Add Item"
+					<input type="button" value="Add Department"
 						onclick="window.location.href='add'; return false;"
-						class="btn bg-success text-white" /> <a
-						href="${pageContext.request.contextPath}/category/list"
-						class="btn bg-success text-white">Go to Categories</a>
+						class="btn bg-success text-white" />
 				</div>
 			</div>
 		</div>

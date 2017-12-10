@@ -1,93 +1,93 @@
 package cs157a.retailinWebApp.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-///import cs157a.retailinWebApp.entity.Authorities;
-import cs157a.retailinWebApp.entity.Users;
+import cs157a.retailinWebApp.entity.User;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
 	@Autowired
-	private SessionFactory sessionFactory; 
-
+	NamedParameterJdbcTemplate namedParameter;
+	
+	public void setNamedParameter(NamedParameterJdbcTemplate namedParameter) throws DataAccessException {
+		this.namedParameter = namedParameter;
+	}
+	
+	private SqlParameterSource getSqlParameterByModel(User user) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		if (user != null) {
+			paramSource.addValue("username", user.getEmpID());
+			paramSource.addValue("last_name", user.getLastName());
+			paramSource.addValue("first_name", user.getFirstName());
+			paramSource.addValue("password", user.getPassword());
+			paramSource.addValue("email", user.getEmail());
+			paramSource.addValue("phone_number", user.getPhoneNumber());
+			paramSource.addValue("enabled", user.getEnabled());
+			paramSource.addValue("authority", user.getAuthority());
+			paramSource.addValue("department_id", user.getDepartmentID());
+		}
+		return paramSource;
+	}
+	
+	
 	@Override
-	public List<Users> getUsers() {
-		Session currentSession = sessionFactory.getCurrentSession();
-		Query<Users> query = currentSession.createQuery("from Users", Users.class); 
-		List<Users> users = query.getResultList();
+	public List<User> getUsers() {
+		String sql = "Select * FROM users";
+		List<User> users = namedParameter.query(sql, getSqlParameterByModel(null), new UserMapper());
 		return users;
 	}
 
 	@Override
-	public void saveUser(Users theUser) {
-		// get current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-		if(theUser.empID < 1) {
-			SQLQuery q = currentSession.createSQLQuery("insert into users(first_name, last_name, password, email, phone_number, enabled, authority, department_id)" + 
-					" values(?, ?, ?, ?, ?, ?, ?, ?)");
-			q.setParameter(0, theUser.getFirstName());
-			q.setParameter(1, theUser.getLastName());
-			q.setParameter(2, theUser.getPassword());
-			q.setParameter(3, theUser.getEmail());
-			q.setParameter(4, theUser.getPhoneNumber());
-			q.setParameter(5, theUser.getEnabled());
-			q.setParameter(6, theUser.getAuthority());
-			q.setParameter(7, theUser.getDepartmentID());
-			q.executeUpdate();
-			SQLQuery q3 = currentSession.createSQLQuery("insert into authorities(username, authority) select username, authority from users order by username desc limit 1");
-			q3.executeUpdate();
-		}
-		else {
-			SQLQuery q = currentSession.createSQLQuery("update users set first_name = ?, last_name = ?, password = ?, email = ?, phone_number = ?, enabled = ?, authority = ?, department_id = ? where username = ?");
-			q.setParameter(0, theUser.getFirstName());
-			q.setParameter(1, theUser.getLastName());
-			q.setParameter(2, theUser.getPassword());
-			q.setParameter(3, theUser.getEmail());
-			q.setParameter(4, theUser.getPhoneNumber());
-			q.setParameter(5, theUser.getEnabled());
-			q.setParameter(6, theUser.getAuthority());
-			q.setParameter(7, theUser.getDepartmentID());
-			q.setParameter(8, theUser.empID);
-			q.executeUpdate();
-			SQLQuery q3 = currentSession.createSQLQuery("update authorities set authority = ? where username = ?");
-			q3.setParameter(0, theUser.getAuthority());
-			q3.setParameter(1, theUser.empID);
-			q3.executeUpdate();
-		}
-		// save/update the customer
-		//currentSession.saveOrUpdate(theUser);
+	public void addUser(User user) {
+		String sql = "INSERT INTO users(username, last_name, first_name, password, email, phone_number, enabled, authority, department_id) "
+				+ "VALUES(:username, :last_name, :first_name, :password, :email, :phone_number, :enabled, :authority, :department_id)";
+		namedParameter.update(sql, getSqlParameterByModel(user));
+	}
+	
+	@Override
+	public void updateUser(User user) {
+		String sql = "UPDATE users SET last_name = :last_name, first_name = :first_name, password = :password, email = :email, "
+				+ "phone_number = :phone_number, enabled = :enabled, authority = :authority, department_id = :department_id "
+				+ "WHERE username = :username";
+		namedParameter.update(sql, getSqlParameterByModel(user));
 	}
 
 	@Override
-	public Users getUser(Integer empID) {
-		// get current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
+	public void deleteUser(Integer empID) {
+		String sql = "DELETE FROM items where item_name = :item_name";
+		namedParameter.update(sql, getSqlParameterByModel(new User(empID)));
+	}
+	
+	@Override
+	public User getUserById(Integer empID) {
+		String sql = "SELECT * FROM users WHERE username = :username";
+		return namedParameter.queryForObject(sql, getSqlParameterByModel(new User(empID)), new UserMapper());
+	}
+}
 
-		// retrieve from database
-		Users user = currentSession.get(Users.class, empID);
-
-		// save/update the customer ... finally LOL
+class UserMapper implements RowMapper<User> {
+	@Override
+	public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+		User user = new User();
+		user.setEmpID(rs.getInt("username"));
+		user.setLastName(rs.getString("last_name"));
+		user.setFirstName(rs.getString("first_name"));
+		user.setPassword(rs.getString("password"));
+		user.setEmail(rs.getString("email"));
+		user.setPhoneNumber(rs.getString("phone_number"));
+		user.setEnabled(rs.getInt("enabled"));
+		user.setAuthority(rs.getString("authority"));
+		user.setDepartmentID(rs.getInt("department_id"));
 		return user;
 	}
-
-	@Override
-	public void deleteUser(Integer theEmpID) {
-		// get the current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-
-		// delete object with primary key
-		Query theQuery = currentSession.createQuery("delete from Users where empID=:employeeID");
-		theQuery.setParameter("employeeID", theEmpID);
-
-		// execute query
-		theQuery.executeUpdate();
-	}
-
 }

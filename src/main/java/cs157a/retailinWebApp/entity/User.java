@@ -11,44 +11,48 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="users")
-public class Users {
+//@Entity
+//@Table(name="users")
+public class User {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="username")
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@Column(name="username")
 	public int empID;
 	
-	@Column(name="last_name")
+//	@Column(name="last_name")
 	private String lastName;
 	
-	@Column(name="first_name")
+//	@Column(name="first_name")
 	private String firstName;	
 	
-	@Column(name="password")
+//	@Column(name="password")
 	private String password;
 	
-	@Column(name="email")
+//	@Column(name="email")
 	private String email;
 	
-	@Column(name="phone_number")
+//	@Column(name="phone_number")
 	private String phoneNumber;
 	
-	@Column(name="enabled")
+//	@Column(name="enabled")
 	private int enabled;
 	
-	@Column(name="authority") 
+//	@Column(name="authority") 
 	private String authority;
 	
-	@Column(name="department_id")
+//	@Column(name="department_id")
 	private int departmentID;
 	
-	public Users() {
-		// TODO Auto-generated constructor stub
+	public User() {
+		// Auto-generated
 	}
 
-	public Users(String lastName, String firstName, String password, String email, String phoneNumber, int enabled, String authority) {//, String authority) {
+	public User(int empID) {
+		this.empID = empID;
+	}
+	
+	public User(String lastName, String firstName, String password, String email, String phoneNumber, int enabled, String authority) {//, String authority) {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.password = password;
@@ -65,14 +69,6 @@ public class Users {
 	public void setEmpID(int empID) {
 		this.empID = empID;
 	}
-
-//	public String getUsername() {
-//		return username;
-//	}
-//
-//	public void setUsername(String username) {
-//		this.username = username;
-//	}
 
 	public String getLastName() {
 		return lastName;

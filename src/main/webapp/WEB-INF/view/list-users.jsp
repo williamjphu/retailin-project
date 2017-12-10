@@ -83,38 +83,39 @@
                 </tr>
               </thead>
               <tbody>
-                <c:forEach var="tempUser" items="${users}">
+                <c:forEach var="user" items="${users}">
                   <!-- construct an "update" link with customer id -->
-                  <c:url var="updateLink2" value="/user/showFormForUpdate">
-                    <c:param name="employeeID" value="${tempUser.empID}" />
+                  <c:url var="updateURL" value="/user/updateEmployee">
+                    <c:param name="employeeID" value="${user.empID}" />
                   </c:url>          
 
                   <!-- construct an "delete" link with customer id -->
-                  <c:url var="deleteLink2" value="/user/delete">
-                    <c:param name="employeeID" value="${tempUser.empID}" />
+                  <c:url var="deleteURL" value="/user/deleteEmployee">
+                    <c:param name="employeeID" value="${user.empID}" />
                   </c:url>          
                 
                   <tr>
-                    <td> ${tempUser.empID} </td>
-                    <td> ${tempUser.lastName} </td>
-                    <td> ${tempUser.firstName} </td>
-                    <td> ${tempUser.password} </td>
-                    <td> ${tempUser.email} </td>
-                    <td> ${tempUser.phoneNumber} </td>
-                    <td> ${tempUser.enabled} </td>
-                    <td> ${tempUser.authority} </td>
-                    <td> ${tempUser.departmentID} </td>
+                    <td> ${user.empID} </td>
+                    <td> ${user.lastName} </td>
+                    <td> ${user.firstName} </td>
+                    <td> ${user.password} </td>
+                    <td> ${user.email} </td>
+                    <td> ${user.phoneNumber} </td>
+                    <td> ${user.enabled} </td>
+                    <td> ${user.authority} </td>
+                    <td> ${user.departmentID} </td>
                     <td>
                       <!-- display the update link -->
-                      <a href="${updateLink2}">Update</a> |
-                      <a href="${deleteLink2}" onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
+                      <a href="${updateURL}">Update</a> |
+                      <a href="${deleteURL}" onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">Delete</a>
                     </td>
                   </tr>
                 </c:forEach>
               </tbody>
             </table>
           </div>
-          <input type="button" value="Add User" onclick="window.location.href='showFormForAdd'; return false;" class="btn bg-success text-white"/>
+          <input type="button" value="Add User" onclick="window.location.href='addUser'; return false;" class="btn bg-success text-white"/>
+          <a href="${pageContext.request.contextPath}/department/list" class="btn bg-success text-white">View/Edit Category</a>
         </div>
       </div>
     </div>
