@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -72,57 +71,51 @@
 		<div class="container-fluid">
 			<div class="card mb-3">
 				<div class="card-header">
-					<i class="fa fa-table"></i> Item Data
+					<i class="fa fa-table"></i>Payroll Data
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<table class="table table-bordered" id="dataTable" width="100%"
+							cellspacing="0">
 							<thead>
 								<tr>
-									<th>Item ID</th>
-									<th>Item name</th>
-									<th>Description</th>
-									<th>Price $</th>
-									<th>Discount %</th>
-									<th>Quantity</th>
-									<th>Category id</th>
+									<th>Payroll ID</th>
+									<th>Pay Period</th>
+									<th>Hourly rate</th>
+									<th>Worked hours</th>
+									<th>Employee ID</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="item" items="${listItems}">
-									<!-- construct an "update" link with customer id -->
-									<c:url var="updateURL" value="/item/update">
-										<c:param name="itemId" value="${item.itemID}" />
+								<c:forEach var="payroll" items="${listItems}">
+									<c:url var="updateURL" value="/payroll/update">
+										<c:param name="payrollId" value="${payroll.payrollID}" />
 									</c:url>
-
-									<!-- construct an "delete" link with customer id -->
-									<c:url var="deleteURL" value="/item/delete">
-										<c:param name="itemId" value="${item.itemID}" />
+									<c:url var="deleteURL" value="/payroll/delete">
+										<c:param name="payrollId" value="${payroll.payrollID}" />
 									</c:url>
 
 									<tr>
-										<td>${item.itemID}</td>
-										<td>${item.itemName}</td>
-										<td>${item.description}</td>
-										<td>${item.price}</td>
-										<td>${item.discount}</td>
-										<td>${item.quantity}</td>
-										<td>${item.categoryID}</td>
+										<td>${payroll.payrollID}</td>
+										<td>${payroll.payPeriod}</td>
+										<td>${payroll.hourlyRate}</td>
+										<td>${payroll.workedHours}</td>
+										<td>${payroll.empID}</td>
 										<td>
-											<!-- display the update link --> <%-- <spring:url value="/item/update/${item.itemName}" var="updateURL" /> --%>
-											<a href="${updateURL}">Update</a> | <%--                       <spring:url value="/item/delete/${item.itemName}" var="deleteURL" /> --%>
+											<!-- display the update link --> 
+											<a href="${updateURL}">Update</a> | 
 											<a href="${deleteURL}"
-											onclick="if (!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a>
+											onclick="if (!(confirm('Are you sure you want to delete this payroll?'))) return false">Delete</a>
 										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
 					</div>
-					<%--  <spring:url value="/item/add" var="addURL" /> --%>
-					<input type="button" value="Add Item" onclick="window.location.href='add'; return false;" class="btn bg-success text-white" /> 
-					<a href="${pageContext.request.contextPath}/category/list" class="btn bg-success text-white">Go to Categories</a>
+					<input type="button" value="Add Category"
+						onclick="window.location.href='add'; return false;"
+						class="btn bg-success text-white" />
 				</div>
 			</div>
 		</div>

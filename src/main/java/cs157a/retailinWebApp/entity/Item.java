@@ -4,7 +4,7 @@ public class Item {
 	private int itemID;
 	private String itemName;
 	private String description;
-	private int price;
+	private double price;
 	private int discount;
 	private int quantity;
 	private int categoryID;
@@ -41,11 +41,11 @@ public class Item {
 		this.description = description;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -71,11 +71,5 @@ public class Item {
 
 	public void setCategoryID(int categoryID) {
 		this.categoryID = categoryID;
-	}
-
-	@Override
-	public String toString() {
-		return "Item [itemName=" + itemName + ", description=" + description + ", price=" + price + ", discount="
-				+ discount + ", quantity=" + quantity + ", categoryID=" + categoryID + "]";
 	}
 }

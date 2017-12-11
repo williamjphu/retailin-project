@@ -118,6 +118,8 @@
           </div>
           <input type="button" value="Add User" onclick="window.location.href='addUser'; return false;" class="btn bg-success text-white"/>
           <a href="${pageContext.request.contextPath}/department/list" class="btn bg-success text-white">View/Edit Category</a>
+          <a href="${pageContext.request.contextPath}/payroll/list" class="btn bg-success text-white">View/Edit Payroll</a>
+          <a href="${pageContext.request.contextPath}/bank-account/list" class="btn bg-success text-white">View/Edit Bank Account</a>
         </div>
       </div>
     </div>

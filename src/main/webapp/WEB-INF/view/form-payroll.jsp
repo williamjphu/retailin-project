@@ -1,14 +1,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Item Information</title>
+<title>RetailIn Employee Information</title>
 <link
 	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -72,61 +70,43 @@
 	<div class="content-wrapper">
 		<div class="container-fluid">
 			<div class="card card-register mx-auto mt-5">
-				<div class="card-header">Item Information Form</div>
+				<div class="card-header">Payroll Form</div>
 				<div class="card-body">
-					<form:form action="save" modelAttribute="itemForm" method="POST">
-						<form:hidden path="itemID" />
+					<form:form action="save" modelAttribute="payrollForm"
+						method="POST">
+						<form:hidden path="payrollID" />
 						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-6">
-									<label for="itemName">Item name</label>
-									<form:input path="itemName" class="form-control" id="itemName"
-										type="text" placeholder="Enter item name" />
+									<label for="payPeriod">Pay Period</label>
+									<form:input path="payPeriod" class="form-control"
+										id="payPeriod" type="text" placeholder="Enter payment period" />
 								</div>
 								<div class="col-md-6">
-									<label for="description">Description</label>
-									<form:input path="description" class="form-control"
-										id="description" type="text" placeholder="Enter Description" />
+									<label for="hourlyRate">Hourly Rate</label>
+									<form:input path="hourlyRate" class="form-control"
+										id="hourlyRate" type="text" placeholder="Enter hourly rate" />
 								</div>
 							</div>
-						</div>
-						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-6">
-									<label for="price">Price</label>
-									<form:input path="price" class="form-control" id="price"
-										type="text" placeholder="Enter price" />
+									<label for="workedHours">Worked Hours</label>
+									<form:input path="workedHours" class="form-control"
+										id="workedHours" type="text" placeholder="Enter payment period" />
 								</div>
 								<div class="col-md-6">
-									<label for="quantity">Quantity</label>
-									<form:input path="quantity" class="form-control" id="quantity"
-										type="text" placeholder="Enter quantity" />
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="form-row">
-								<div class="col-md-4">
-									<label for="discount">discount</label>
-									<form:input path="discount" class="form-control" id="discount"
-										type="text" placeholder="Enter discount" />
-								</div>
-								<div class="col-md-4">
-									<label for="categoryID">Category ID</label>
-									<form:select path="categoryID" class="form-control" id="categoryID">
-										<c:forEach var="category" items="${listCategories}">
-											<form:option value="${category.categoryID}">${category.categoryID} - ${category.name}</form:option>
+									<label for="empID">Employee ID</label>
+									<form:select path="empID" class="form-control" id="empID">
+										<c:forEach var="employee" items="${listEmployees}">
+											<form:option value="${employee.empID}">${employee.empID} - ${employee.lastName}, ${employee.firstName}</form:option>
 										</c:forEach>
 									</form:select>
 								</div>
 							</div>
 						</div>
-						<input type="submit" value="Apply & Save"
-							class="btn text-white bg-success btn-block" />
+						<input type="submit" value="Apply & Save" class="btn text-white bg-success btn-block" />
 					</form:form>
-					<a href="${pageContext.request.contextPath}/item/list"
-						class="btn btn-secondary btn-block vert-offset-top-1">Back to
-						List</a>
+					<a href="${pageContext.request.contextPath}/payroll/list" class="btn btn-secondary btn-block vert-offset-top-1">Back to List</a>
 				</div>
 			</div>
 		</div>
@@ -169,7 +149,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </body>
 </html>
