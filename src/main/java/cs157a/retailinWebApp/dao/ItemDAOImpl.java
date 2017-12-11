@@ -80,7 +80,7 @@ class ItemMapper implements RowMapper<Item> {
 		item.setItemID(rs.getInt("item_id"));
 		item.setItemName(rs.getString("item_name"));
 		item.setDescription(rs.getString("description"));
-		item.setPrice(rs.getInt("price"));
+		item.setPrice(rs.getDouble("price"));
 		item.setDiscount(rs.getInt("discount"));
 		item.setQuantity(rs.getInt("quantity"));
 		item.setCategoryID(rs.getInt("category_id"));
