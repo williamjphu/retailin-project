@@ -20,7 +20,7 @@ public class PayrollDAOImpl implements PayrollDAO {
 	NamedParameterJdbcTemplate namedParamter;
 	
 	@Autowired
-	public void setNamedParamter(NamedParameterJdbcTemplate namedParamter) {
+	public void setNamedParamter(NamedParameterJdbcTemplate namedParamter) throws DataAccessException {
 		this.namedParamter = namedParamter;
 	}
 	

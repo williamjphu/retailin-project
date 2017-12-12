@@ -42,7 +42,7 @@ public class ItemDAOImpl implements ItemDAO {
 	
 	@Override
 	public List<Item> getItems() {
-		String sql = "SELECT * FROM items";
+		String sql = "SELECT * FROM items ORDER BY item_name";
 		List<Item> items = namedParameter.query(sql, getSqlParameterByModel(null), new ItemMapper());
 		return items;
 	}

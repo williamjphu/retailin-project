@@ -1,7 +1,6 @@
-<%-- <% response.sendRedirect("user/list"); %> --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
 
 <!DOCTYPE html>
 <html>
@@ -70,93 +69,53 @@
 	</nav>
 	<div class="content-wrapper">
 		<div class="container-fluid">
-			<!-- Icon Cards-->
-			<div class="row vert-offset-top-3">
-				<div class="col-xl-12 mb-3">
-					<h2>
-						Welcome,
-						<sec:authentication property="principal.username" />
-						!
-					</h2>
+			<div class="card mb-3">
+				<div class="card-header">
+					<i class="fa fa-table"></i>Receipts Data
 				</div>
-				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
-					<div class="card text-white bg-primary o-hidden h-100">
-						<a href="${pageContext.request.contextPath}/cart"
-							class="text-white">
-							<div class="card-body">
-								<div class="card-body-icon">
-									<i class="fa fa-fw fa-shopping-cart"></i>
-								</div>
-								<div class="mr-5">CHECKOUT</div>
-							</div>
-							<div class="card-footer clearfix small z-1">
-								<span class="float-left">Enter shopping mode</span> <span
-									class="float-right"> <i class="fa fa-angle-right"></i>
-								</span>
-							</div>
-						</a>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%"
+							cellspacing="0">
+							<thead>
+								<tr>
+									<th>Receipt ID</th>
+									<th>Receipt Date</th>
+									<th>Total</th>
+									<th>Customer ID</th>
+									<th>Issued By</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="receipt" items="${listReceipts}">
+									<c:url var="updateURL" value="/receipt/update">
+										<c:param name="receiptId" value="${receipt.transactionNo}" />
+									</c:url>
+									<c:url var="deleteURL" value="/receipt/delete">
+										<c:param name="receiptId" value="${receipt.transactionNo}" />
+									</c:url>
+
+									<tr>
+										<td>${receipt.transactionNo}</td>
+										<td>${receipt.timestamp}</td>
+										<td>${receipt.total}</td>
+										<td>${receipt.customerID}</td>
+										<td>${receipt.empID}</td>
+										<td>
+											<!-- display the update link --> 
+											<a href="${updateURL}">Update</a> | 
+											<a href="${deleteURL}"
+											onclick="if (!(confirm('Are you sure you want to delete this receipt?'))) return false">Delete</a>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 					</div>
+					<input type="button" value="Add receipt" onclick="window.location.href='add'; return false;" class="btn bg-success text-white" />
 				</div>
-				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
-					<div class="card text-white bg-warning o-hidden h-100">
-						<a href="${pageContext.request.contextPath}/item/list"
-							class="text-white">
-							<div class="card-body">
-								<div class="card-body-icon">
-									<i class="fa fa-fw fa-table"></i>
-								</div>
-								<div class="mr-5">INVENTORY</div>
-							</div>
-							<div class="card-footer clearfix small z-1">
-								<span class="float-left">Manage items in stock</span> <span
-									class="float-right"> <i class="fa fa-angle-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
-					<div class="card text-white bg-success o-hidden h-100">
-						<a href="${pageContext.request.contextPath}/customer/list"
-							class="text-white">
-							<div class="card-body">
-								<div class="card-body-icon">
-									<i class="fa fa-fw fa-user-circle"></i>
-								</div>
-								<div class="mr-5">CUSTOMERS</div>
-							</div>
-							<div class="card-footer clearfix small z-1">
-								<span class="float-left">Manage customer information</span> <span
-									class="float-right"> <i class="fa fa-angle-right"></i>
-								</span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
-						<div class="card text-white bg-danger o-hidden h-100">
-							<a href="${pageContext.request.contextPath}/user/list"
-								class="text-white">
-								<div class="card-body">
-									<div class="card-body-icon">
-										<i class="fa fa-fw fa-black-tie"></i>
-									</div>
-									<div class="mr-5">EMPLOYEES</div>
-								</div>
-								<div class="card-footer clearfix small z-1">
-									<span class="float-left">Manage employee information</span> <span
-										class="float-right"> <i class="fa fa-angle-right"></i>
-									</span>
-								</div>
-							</a>
-						</div>
-					</div>
-				</sec:authorize>
-				<a href="${pageContext.request.contextPath}/receipt/list">Go to receipts</a><br><br>
-				<a href="${pageContext.request.contextPath}/vendor/list">Go to vendors</a>
 			</div>
-			<!-- Area Chart Example-->
 		</div>
 		<!-- /.container-fluid-->
 		<!-- /.content-wrapper-->
