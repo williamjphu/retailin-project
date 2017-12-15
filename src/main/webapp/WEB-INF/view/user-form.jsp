@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -52,6 +53,11 @@
 					href="${pageContext.request.contextPath}/customer/list"> <i
 						class="fa fa-fw fa-user-circle"></i> <span class="nav-link-text">Customers</span>
 				</a></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Employees"><a class="nav-link"
+					href="${pageContext.request.contextPath}/user/list"> <i
+						class="fa fa-fw fa-black-tie"></i> <span class="nav-link-text">Employees</span>
+				</a></li>
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<li class="nav-item" data-toggle="tooltip" data-placement="right"
 						title="Employees"><a class="nav-link"
@@ -92,7 +98,7 @@
 							<div class="form-row">
 								<div class="col-md-14">
 									<label for="password1">Password</label>
-									<form:input path="password" class="form-control" id="password1"
+									<form:input path="password" class="form-control" id="password"
 										type="password" placeholder="Password" />
 								</div>
 							</div>
@@ -115,8 +121,10 @@
 							<div class="form-row">
 								<div class="col-md-4">
 									<label for="enabled">Enabled</label>
-									<form:input path="enabled" value="1" class="form-control"
-										id="enabled" type="text" />
+									<form:select path="enabled" class="form-control" id="role">
+										<form:option value="1">Yes</form:option>
+										<form:option value="0">No</form:option>
+									</form:select>
 								</div>
 								<div class="col-md-4">
 									<label for="role">Role</label>
@@ -126,12 +134,11 @@
 									</form:select>
 								</div>
 								<div class="col-md-4">
-									<label for="role">Department</label>
-									<form:select path="departmentID" class="form-control" id="role">
-										<form:option value="1">Admin</form:option>
-										<form:option value="2">Cashier</form:option>
-										<form:option value="3">Human Resources</form:option>
-										<form:option value="4">Accounting/Finances</form:option>
+									<label for="department">Department</label>
+									<form:select path="departmentID" class="form-control" id="department" >
+										<c:forEach var="dept" items="${listDepartments}">
+											<form:option value="${dept.deptID}">${dept.deptID} - ${dept.name}</form:option>
+										</c:forEach>
 									</form:select>
 								</div>
 							</div>
@@ -151,7 +158,7 @@
 	<footer class="sticky-footer">
 		<div class="container">
 			<div class="text-center">
-				<small>Copyright © RetailIn 2017</small>
+				<small>Copyright Â© RetailIn 2017</small>
 			</div>
 		</div>
 	</footer>
@@ -168,7 +175,7 @@
 					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">×</span>
+						<span aria-hidden="true">Ã—</span>
 					</button>
 				</div>
 				<div class="modal-body">Select "Logout" below if you are ready

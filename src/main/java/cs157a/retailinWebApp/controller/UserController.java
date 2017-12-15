@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import cs157a.retailinWebApp.entity.Users;
+import cs157a.retailinWebApp.entity.Department;
+import cs157a.retailinWebApp.entity.User;
+import cs157a.retailinWebApp.service.DepartmentService;
 import cs157a.retailinWebApp.service.UserService;
 
 @Controller
@@ -21,42 +23,49 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private DepartmentService deptService;
+	
 	@GetMapping("/list")
 	public String listCustomers(Model theModel) {
-		// get customers from the service
-		List<Users> users = userService.getUsers();
-		// add the customers to the model
+		List<User> users = userService.getUsers();
 		theModel.addAttribute("users", users);
 		return "list-users";
 	}
 	
-	@GetMapping("/showFormForAdd")
-	public String showFormForAdd(Model theModel) {
+	@GetMapping("/addUser")
+	public String addUser(Model theModel) {
 		// create model attribute to bind form data
-		Users user = new Users();
+		User user = new User();
 		theModel.addAttribute("user", user);
+		
+		List<Department> depts = deptService.listDepartments();
+		theModel.addAttribute("listDepartments", depts);
+		return "user-form";
+	}
+	
+	@GetMapping("/updateEmployee")
+	public String updateUser(@RequestParam("employeeID") Integer empID, Model theModel) {
+		User theUser = userService.getUserById(empID);	
+		theModel.addAttribute("user", theUser);
+		
+		List<Department> depts = deptService.listDepartments();
+		theModel.addAttribute("listDepartments", depts);
 		return "user-form";
 	}
 	
 	@PostMapping("/saveUser")
-	public String saveUser(@ModelAttribute("user") Users theUser) {
-		// save the customer using our service
-		userService.saveUser(theUser);	
+	public String saveUser(@ModelAttribute("user") User theUser) {
+		if (theUser.getEmpID() < 1) {
+			userService.addUser(theUser);
+		} else {
+			userService.updateUser(theUser);
+		}
 		return "redirect:/user/list";
 	}
-	
-	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("employeeID") Integer empID, Model theModel) {
-		// get the customer from our service
-		Users theUser = userService.getUser(empID);	
-		// set customer as a model attribute to pre-populate the form
-		theModel.addAttribute("user", theUser);
-		// send over to our form		
-		return "user-form";
-	}
-	
-	@GetMapping("/delete")
-	public String deleteCustomer(@RequestParam("employeeID") Integer empID) {
+
+	@GetMapping("/deleteEmployee")
+	public String deleteUser(@RequestParam("employeeID") Integer empID) {
 		// delete the customer
 		userService.deleteUser(empID);
 		return "redirect:/user/list";

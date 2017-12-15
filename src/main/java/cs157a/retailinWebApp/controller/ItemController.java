@@ -11,55 +11,58 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import cs157a.retailinWebApp.dao.ItemDAO;
+import cs157a.retailinWebApp.entity.Category;
 import cs157a.retailinWebApp.entity.Item;
-import cs157a.retailinWebApp.entity.Users;
+import cs157a.retailinWebApp.service.CategoryService;
+import cs157a.retailinWebApp.service.ItemService;
 
 @Controller
 @RequestMapping("/item")
 public class ItemController {
-
+	
 	@Autowired
-	private ItemDAO itemDAO;
-
+	private ItemService itemService;
+	@Autowired
+	private CategoryService categoryServ;
+	
 	@GetMapping("/list")
 	public String listItems(Model theModel) {
-		// get customers from the service
-		List<Item> items = itemDAO.getItems();
-		// add the customers to the model
-		theModel.addAttribute("items", items);
+		List<Item> items = itemService.getItems();
+		theModel.addAttribute("listItems", items);
+		List<Category> categories = categoryServ.listCategories();
+		theModel.addAttribute("listCategories", categories);
 		return "list-items";
 	}
 	
-	@GetMapping("/showFormForAdd")
-	public String showFormForAdd(Model theModel) {
-		// create model attribute to bind form data
+	@GetMapping("/add")
+	public String add(Model theModel) {
 		Item it = new Item();
-		theModel.addAttribute("itemss", it);
+		theModel.addAttribute("itemForm", it);
 		return "item-form";
 	}
 	
-	@PostMapping("/saveItem")
-	public String saveItem(@ModelAttribute("itemss") Item it) {
-		// save the customer using our service
-		itemDAO.saveItem(it);	
+	@GetMapping("/update")
+	public String showFormForUpdate(@RequestParam("itemId") Integer itemId, Model theModel) {
+		Item it = itemService.findItemById(itemId);	
+		theModel.addAttribute("itemForm", it);
+		List<Category> categories = categoryServ.listCategories();
+		theModel.addAttribute("listCategories", categories);
+		return "item-form";
+	}
+	
+	@PostMapping("/save")
+	public String save(@ModelAttribute("itemForm") Item item) {
+		if (item.getItemID() < 1) {
+			itemService.addItem(item);
+		} else {
+			itemService.updateItem(item);
+		}
 		return "redirect:/item/list";
 	}
 	
-	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("itemId") String itid, Model theModel) {
-		// get the customer from our service
-		Item it = itemDAO.getItem(itid);	
-		// set customer as a model attribute to pre-populate the form
-		theModel.addAttribute("itemss", it);
-		// send over to our form		
-		return "item-form";
-	}
-	
 	@GetMapping("/delete")
-	public String deleteCustomer(@RequestParam("itemId") String itid) {
-		// delete the customer
-		itemDAO.deleteItem(itid);
+	public String deleteCustomer(@RequestParam("itemId") Integer itemId) {
+		itemService.deleteItem(itemId);
 		return "redirect:/item/list";
 	}
 }

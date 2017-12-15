@@ -68,7 +68,7 @@
       <div class="card card-register mx-auto mt-5">
         <div class="card-header">Category Information Form</div>
           <div class="card-body">
-            <form:form action="saveCategory" modelAttribute="theCategory" method="POST">
+            <form:form action="save" modelAttribute="categoryForm" method="POST">
               <form:hidden path="categoryID" />
               <div class="form-group">
                 <div class="form-row">

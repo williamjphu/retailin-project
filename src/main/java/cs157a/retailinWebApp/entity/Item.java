@@ -1,44 +1,28 @@
 package cs157a.retailinWebApp.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="items")
 public class Item {
-	
-	@Id
-	@Column(name="item_name")
+	private int itemID;
 	private String itemName;
-	
-	@Column(name="description")
 	private String description;
-	
-	@Column(name="price")
-	private int price;
-	
-	@Column(name="discount")
+	private double price;
 	private int discount;
-	
-	@Column(name="quantity")
 	private int quantity;
-	
-	@Column(name="category_id")
 	private int categoryID;
 	
 	public Item() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Item(String itemName, String description, int price, int discount, int quantity, int categoryID) {
-		this.itemName = itemName;
-		this.description = description;
-		this.price = price;
-		this.discount = discount;
-		this.quantity = quantity;
-		this.categoryID = categoryID;
+	public Item(int itemID) {
+		this.itemID = itemID;
+	}
+
+	public int getItemID() {
+		return itemID;
+	}
+
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
 	public String getItemName() {
@@ -57,11 +41,11 @@ public class Item {
 		this.description = description;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -87,11 +71,5 @@ public class Item {
 
 	public void setCategoryID(int categoryID) {
 		this.categoryID = categoryID;
-	}
-
-	@Override
-	public String toString() {
-		return "Item [itemName=" + itemName + ", description=" + description + ", price=" + price + ", discount="
-				+ discount + ", quantity=" + quantity + ", categoryID=" + categoryID + "]";
 	}
 }

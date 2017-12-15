@@ -153,6 +153,8 @@
 						</div>
 					</div>
 				</sec:authorize>
+				<a href="${pageContext.request.contextPath}/receipt/list">Go to receipts</a><br><br>
+				<a href="${pageContext.request.contextPath}/vendor/list">Go to vendors</a>
 			</div>
 			<!-- Area Chart Example-->
 		</div>

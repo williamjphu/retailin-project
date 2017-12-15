@@ -6,7 +6,8 @@ import cs157a.retailinWebApp.entity.Item;
 
 public interface ItemDAO {
 	public List<Item> getItems();
-	public void saveItem(Item item);
-	public Item getItem(String itemN);
-	public void deleteItem(String itemN);
+	public void addItem(Item item);
+	public void updateItem(Item item);
+	public void deleteItem(int itemId);
+	public Item findItemById(int itemId);
 }

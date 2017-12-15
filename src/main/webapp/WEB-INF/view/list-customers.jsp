@@ -1,27 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RetailIn Home</title>
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/resources/css/sb-admin.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -52,6 +42,11 @@
 					href="${pageContext.request.contextPath}/customer/list"> <i
 						class="fa fa-fw fa-user-circle"></i> <span class="nav-link-text">Customers</span>
 				</a></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Employees"><a class="nav-link"
+					href="${pageContext.request.contextPath}/user/list"> <i
+						class="fa fa-fw fa-black-tie"></i> <span class="nav-link-text">Employees</span>
+				</a></li>
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<li class="nav-item" data-toggle="tooltip" data-placement="right"
 						title="Employees"><a class="nav-link"
@@ -79,6 +74,7 @@
 							cellspacing="0">
 							<thead>
 								<tr>
+									<th>Customer ID</th>
 									<th>Phone Number</th>
 									<th>Last Name</th>
 									<th>First Name</th>
@@ -90,24 +86,25 @@
 							<tbody>
 								<c:forEach var="tempCustomer" items="${customers}">
 									<!-- construct an "update" link with customer id -->
-									<c:url var="updateLink2" value="/customer/showFormForUpdate">
-										<c:param name="custID" value="${tempCustomer.phoneNumber}" />
+									<c:url var="updateURL" value="/customer/update">
+										<c:param name="custID" value="${tempCustomer.customerID}" />
 									</c:url>
 
 									<!-- construct an "delete" link with customer id -->
-									<c:url var="deleteLink2" value="/customer/delete">
-										<c:param name="custID" value="${tempCustomer.phoneNumber}" />
+									<c:url var="deleteURL" value="/customer/delete">
+										<c:param name="custID" value="${tempCustomer.customerID}" />
 									</c:url>
 
 									<tr>
+										<td>${tempCustomer.customerID}</td>
 										<td>${tempCustomer.phoneNumber}</td>
 										<td>${tempCustomer.lastName}</td>
 										<td>${tempCustomer.firstName}</td>
 										<td>${tempCustomer.email}</td>
 										<td>${tempCustomer.zipCode}</td>
 										<td>
-											<!-- display the update link --> <a href="${updateLink2}">Update</a>
-											| <a href="${deleteLink2}"
+											<!-- display the update link --> <a href="${updateURL}">Update</a>
+											| <a href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
 										</td>
 									</tr>
@@ -116,7 +113,7 @@
 						</table>
 					</div>
 					<input type="button" value="Add User"
-						onclick="window.location.href='formAdd'; return false;"
+						onclick="window.location.href='add'; return false;"
 						class="btn bg-success text-white" />
 				</div>
 			</div>
@@ -126,7 +123,7 @@
 		<footer class="sticky-footer">
 			<div class="container">
 				<div class="text-center">
-					<small>Copyright © RetailIn 2017</small>
+					<small>Copyright Â© RetailIn 2017</small>
 				</div>
 			</div>
 		</footer>
@@ -144,7 +141,7 @@
 							Leave?</h5>
 						<button class="close" type="button" data-dismiss="modal"
 							aria-label="Close">
-							<span aria-hidden="true">×</span>
+							<span aria-hidden="true">Ã—</span>
 						</button>
 					</div>
 					<div class="modal-body">Select "Logout" below if you are
