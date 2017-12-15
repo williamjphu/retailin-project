@@ -99,9 +99,8 @@
 										<td>${tempCategory.name}</td>
 										<td>${tempCategory.description}</td>
 										<td>
-											<!-- display the update link --> 
-											<a href="${updateURL}">Update</a> | 
-											<a href="${deleteURL}"
+											<!-- display the update link --> <a href="${updateURL}">Update</a>
+											| <a href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this cateogry?'))) return false">Delete</a>
 										</td>
 									</tr>

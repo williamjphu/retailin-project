@@ -72,7 +72,8 @@
 			<div class="card card-register mx-auto mt-5">
 				<div class="card-header">Customer Information Form</div>
 				<div class="card-body">
-					<form:form action="save" modelAttribute="customerForm" method="POST">
+					<form:form action="save" modelAttribute="customerForm"
+						method="POST">
 						<form:hidden path="customerID" />
 						<div class="form-group">
 							<div class="form-row">
@@ -161,7 +162,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </body>
 </html>

@@ -90,14 +90,14 @@
 							</thead>
 							<tbody>
 								<c:forEach var="vendor" items="${listVendors}">
-									
+
 									<c:url var="updateURL" value="/vendor/update">
 										<c:param name="vendorId" value="${vendor.vendorID}" />
 									</c:url>
 									<c:url var="deleteURL" value="/vendor/delete">
 										<c:param name="vendorId" value="${vendor.vendorID}" />
 									</c:url>
-									
+
 									<tr>
 										<td>${vendor.ein}</td>
 										<td>${vendor.name}</td>
@@ -106,9 +106,8 @@
 										<td>${vendor.state}</td>
 										<td>${vendor.zipCode}</td>
 										<td>
-											<!-- display the update link --> 
-											<a href="${updateURL}">Update</a> | 
-											<a href="${deleteURL}"
+											<!-- display the update link --> <a href="${updateURL}">Update</a>
+											| <a href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this vendor?'))) return false">Delete</a>
 										</td>
 									</tr>
@@ -116,7 +115,9 @@
 							</tbody>
 						</table>
 					</div>
-					<input type="button" value="Add vendor" onclick="window.location.href='add'; return false;" class="btn bg-success text-white" />
+					<input type="button" value="Add vendor"
+						onclick="window.location.href='add'; return false;"
+						class="btn bg-success text-white" />
 				</div>
 			</div>
 		</div>

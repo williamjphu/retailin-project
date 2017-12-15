@@ -103,9 +103,8 @@
 										<td>${payroll.workedHours}</td>
 										<td>${payroll.empID}</td>
 										<td>
-											<!-- display the update link --> 
-											<a href="${updateURL}">Update</a> | 
-											<a href="${deleteURL}"
+											<!-- display the update link --> <a href="${updateURL}">Update</a>
+											| <a href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this payroll?'))) return false">Delete</a>
 										</td>
 									</tr>

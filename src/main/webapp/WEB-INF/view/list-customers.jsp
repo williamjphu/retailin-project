@@ -1,17 +1,27 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RetailIn Home</title>
-<link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/resources/css/sb-admin.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
+	rel="stylesheet">
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">

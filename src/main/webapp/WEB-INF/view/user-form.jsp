@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 
 <!DOCTYPE html>
@@ -135,7 +136,8 @@
 								</div>
 								<div class="col-md-4">
 									<label for="department">Department</label>
-									<form:select path="departmentID" class="form-control" id="department" >
+									<form:select path="departmentID" class="form-control"
+										id="department">
 										<c:forEach var="dept" items="${listDepartments}">
 											<form:option value="${dept.deptID}">${dept.deptID} - ${dept.name}</form:option>
 										</c:forEach>
@@ -191,7 +193,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </body>
 </html>

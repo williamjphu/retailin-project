@@ -2,7 +2,7 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -113,7 +113,8 @@
 								</div>
 								<div class="col-md-4">
 									<label for="categoryID">Category ID</label>
-									<form:select path="categoryID" class="form-control" id="categoryID">
+									<form:select path="categoryID" class="form-control"
+										id="categoryID">
 										<c:forEach var="category" items="${listCategories}">
 											<form:option value="${category.categoryID}">${category.categoryID} - ${category.name}</form:option>
 										</c:forEach>
@@ -169,7 +170,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </body>
 </html>

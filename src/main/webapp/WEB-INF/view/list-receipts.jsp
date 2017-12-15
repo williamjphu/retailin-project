@@ -103,9 +103,8 @@
 										<td>${receipt.customerID}</td>
 										<td>${receipt.empID}</td>
 										<td>
-											<!-- display the update link --> 
-											<a href="${updateURL}">Update</a> | 
-											<a href="${deleteURL}"
+											<!-- display the update link --> <a href="${updateURL}">Update</a>
+											| <a href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this receipt?'))) return false">Delete</a>
 										</td>
 									</tr>
@@ -113,7 +112,9 @@
 							</tbody>
 						</table>
 					</div>
-					<input type="button" value="Add receipt" onclick="window.location.href='add'; return false;" class="btn bg-success text-white" />
+					<input type="button" value="Add receipt"
+						onclick="window.location.href='add'; return false;"
+						class="btn bg-success text-white" />
 				</div>
 			</div>
 		</div>

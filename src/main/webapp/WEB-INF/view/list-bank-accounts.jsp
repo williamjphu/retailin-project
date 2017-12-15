@@ -75,7 +75,8 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<table class="table table-bordered" id="dataTable" width="100%"
+							cellspacing="0">
 							<thead>
 								<tr>
 									<th>Bank Account ID</th>
@@ -108,9 +109,8 @@
 										<td>${accts.bankState}</td>
 										<td>${accts.empID}</td>
 										<td>
-											<!-- display the update link --> 
-											<a href="${updateURL}">Update</a> | 
-											<a href="${deleteURL}"
+											<!-- display the update link --> <a href="${updateURL}">Update</a>
+											| <a href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this bank account?'))) return false">Delete</a>
 										</td>
 									</tr>
@@ -118,7 +118,9 @@
 							</tbody>
 						</table>
 					</div>
-					<input type="button" value="Add Bank" onclick="window.location.href='add'; return false;" class="btn bg-success text-white" />
+					<input type="button" value="Add Bank"
+						onclick="window.location.href='add'; return false;"
+						class="btn bg-success text-white" />
 				</div>
 			</div>
 		</div>

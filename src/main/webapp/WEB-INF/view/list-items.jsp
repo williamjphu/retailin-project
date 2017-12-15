@@ -76,7 +76,8 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<table class="table table-bordered" id="dataTable" width="100%"
+							cellspacing="0">
 							<thead>
 								<tr>
 									<th>Item ID</th>
@@ -121,8 +122,11 @@
 						</table>
 					</div>
 					<%--  <spring:url value="/item/add" var="addURL" /> --%>
-					<input type="button" value="Add Item" onclick="window.location.href='add'; return false;" class="btn bg-success text-white" /> 
-					<a href="${pageContext.request.contextPath}/category/list" class="btn bg-success text-white">Go to Categories</a>
+					<input type="button" value="Add Item"
+						onclick="window.location.href='add'; return false;"
+						class="btn bg-success text-white" /> <a
+						href="${pageContext.request.contextPath}/category/list"
+						class="btn bg-success text-white">Go to Categories</a>
 				</div>
 			</div>
 		</div>

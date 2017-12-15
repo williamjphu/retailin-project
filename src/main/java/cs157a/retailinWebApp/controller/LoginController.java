@@ -1,8 +1,5 @@
 package cs157a.retailinWebApp.controller;
 
-import java.security.Principal;
-
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
