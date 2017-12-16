@@ -31,10 +31,11 @@ public class BankDAOImpl implements BankDAO {
 			paramSource.addValue("acct_no", bank.getAcctNumber());
 			paramSource.addValue("routing_no", bank.getRoutingNumber());
 			paramSource.addValue("acct_type", bank.getAcctType());
-			paramSource.addValue("bank_name", bank.getBankName());
-			paramSource.addValue("bank_addr", bank.getBankAddress());
-			paramSource.addValue("bank_city", bank.getBankCity());
-			paramSource.addValue("bank_state", bank.getBankState());
+			paramSource.addValue("name", bank.getBankName());
+			paramSource.addValue("address", bank.getBankAddress());
+			paramSource.addValue("city", bank.getBankCity());
+			paramSource.addValue("state", bank.getBankState());
+			paramSource.addValue("zip_code", bank.getZipCode());
 			paramSource.addValue("emp_id", bank.getEmpID());
 		}
 		return paramSource;
@@ -48,15 +49,15 @@ public class BankDAOImpl implements BankDAO {
 
 	@Override
 	public void addBankAccount(BankAccount bankAccount) {
-		String sql = "INSERT INTO bank_accounts(acct_id, acct_no, routing_no, acct_type, bank_name, bank_addr, bank_city, bank_state, emp_id) "
-				+ "VALUES(:acct_id, :acct_no, :routing_no, :acct_type, :bank_name, :bank_addr, :bank_city, :bank_state, :emp_id)";
+		String sql = "INSERT INTO bank_accounts(acct_id, acct_no, routing_no, acct_type, name, address, city, state, zip_code, emp_id) "
+				+ "VALUES(:acct_id, :acct_no, :routing_no, :acct_type, :name, :address, :city, :state, :zip_code, :emp_id)";
 		namedParamter.update(sql, getParameterByModel(bankAccount));
 	}
 
 	@Override
 	public void updateBankAccount(BankAccount bankAccount) {
-		String sql = "UPDATE bank_accounts SET acct_no = :acct_no, routing_no = :routing_no, acct_type = :acct_type, bank_name = :bank_name, "
-				+ "bank_name = :bank_name, bank_city = :bank_city, bank_state = :bank_state, emp_id = :emp_id "
+		String sql = "UPDATE bank_accounts SET acct_no = :acct_no, routing_no = :routing_no, acct_type = :acct_type, name = :name, "
+				+ "address = :address, city = :city, state = :state, zip_code = :zip_code, emp_id = :emp_id "
 				+ "WHERE acct_id = :acct_id";
 		namedParamter.update(sql, getParameterByModel(bankAccount));
 	}
@@ -79,13 +80,14 @@ class BankMapper implements RowMapper<BankAccount> {
 	public BankAccount mapRow(ResultSet rs, int rowNum) throws SQLException {
 		BankAccount pay = new BankAccount();
 		pay.setAcctID(rs.getInt("acct_id"));
-		pay.setAcctNumber(rs.getInt("acct_no"));
-		pay.setRoutingNumber(rs.getInt("routing_no"));
+		pay.setAcctNumber(rs.getLong("acct_no"));
+		pay.setRoutingNumber(rs.getLong("routing_no"));
 		pay.setAcctType(rs.getString("acct_type"));
-		pay.setBankName(rs.getString("bank_name"));
-		pay.setBankAddress(rs.getString("bank_addr"));
-		pay.setBankCity(rs.getString("bank_city"));
-		pay.setBankState(rs.getString("bank_state"));
+		pay.setBankName(rs.getString("name"));
+		pay.setBankAddress(rs.getString("address"));
+		pay.setBankCity(rs.getString("city"));
+		pay.setBankState(rs.getString("state"));
+		pay.setZipCode(rs.getInt("zip_code"));
 		pay.setEmpID(rs.getInt("emp_id"));
 		return pay;
 	}

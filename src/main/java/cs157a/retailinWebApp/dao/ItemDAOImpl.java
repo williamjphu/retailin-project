@@ -35,6 +35,7 @@ public class ItemDAOImpl implements ItemDAO {
 			paramSource.addValue("discount", item.getDiscount());
 			paramSource.addValue("quantity", item.getQuantity());
 			paramSource.addValue("category_id", item.getCategoryID());
+			paramSource.addValue("vendor_id", item.getVendorID());
 		}
 		return paramSource;
 	}
@@ -48,14 +49,15 @@ public class ItemDAOImpl implements ItemDAO {
 
 	@Override
 	public void addItem(Item item) {
-		String sql = "INSERT INTO items(item_id, item_name, description, price, discount, quantity, category_id) "
-				+ "VALUES(:item_id, :item_name, :description, :price, :discount, :quantity, :category_id)";
+		String sql = "INSERT INTO items(item_id, item_name, description, price, discount, quantity, category_id, vendor_id) "
+				+ "VALUES(:item_id, :item_name, :description, :price, :discount, :quantity, :category_id, :vendor_id)";
 		namedParameter.update(sql, getSqlParameterByModel(item));
 	}
 
 	@Override
 	public void updateItem(Item item) {
-		String sql = "UPDATE items SET item_name = :item_name, description = :description, price = :price, discount = :discount, quantity = :quantity, category_id = :category_id "
+		String sql = "UPDATE items SET item_name = :item_name, description = :description, price = :price, "
+				+ "discount = :discount, quantity = :quantity, category_id = :category_id, vendor_id = :vendor_id "
 				+ "WHERE item_id = :item_id";
 		namedParameter.update(sql, getSqlParameterByModel(item));
 	}
@@ -83,6 +85,7 @@ class ItemMapper implements RowMapper<Item> {
 		item.setDiscount(rs.getInt("discount"));
 		item.setQuantity(rs.getInt("quantity"));
 		item.setCategoryID(rs.getInt("category_id"));
+		item.setVendorID(rs.getInt("vendor_id"));
 		return item;
 	}
 }

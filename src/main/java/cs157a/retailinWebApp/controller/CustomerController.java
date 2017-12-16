@@ -31,14 +31,14 @@ public class CustomerController {
 	public String addCustomer(Model theModel) {
 		Customer cust = new Customer();
 		theModel.addAttribute("customerForm", cust);
-		return "customer-form";
+		return "form-customer";
 	}
 	
 	@GetMapping("/update")
 	public String updateCustomer(@RequestParam("custID") int custID, Model theModel) {
 		Customer cust = customerService.findCustomerById(custID);
 		theModel.addAttribute("customerForm", cust);
-		return "customer-form";
+		return "form-customer";
 	}
 	
 	@PostMapping("/save")

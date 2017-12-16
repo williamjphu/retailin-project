@@ -53,8 +53,8 @@ public class VendorDAOImpl implements VendorDAO {
 
 	@Override
 	public void updateVendor(Vendor vendor) {
-		String sql = "UPDATE vendors SET ein = :ein, name = :name, address = :address, city = :city, state = :state, zip_code = :zip_code "
-				+ "WHERE vendor_id = :vendor_id";
+		String sql = "UPDATE vendors SET ein = :ein, name = :name, address = :address, city = :city, state = :state, "
+				+ "zip_code = :zip_code WHERE vendor_id = :vendor_id";
 		namedParamter.update(sql, getParameterByModel(vendor));
 	}
 
