@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
@@ -36,6 +37,16 @@
 						class="fa fa-fw fa-black-tie"></i> <span class="nav-link-text">Employees</span>
 				</a></li>
 			</sec:authorize>
+			<li class="nav-item" data-toggle="tooltip" data-placement="right"
+				title="Receipts"><a class="nav-link"
+				href="${pageContext.request.contextPath}/receipt/list"> <i
+					class="fa fa-fw fa-dollar"></i> <span class="nav-link-text">Receipts</span>
+			</a></li>
+			<li class="nav-item" data-toggle="tooltip" data-placement="right"
+				title="Vendors"><a class="nav-link"
+				href="${pageContext.request.contextPath}/vendor/list"> <i
+					class="fa fa-fw fa-truck"></i> <span class="nav-link-text">Vendors</span>
+			</a></li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item"><a class="nav-link" data-toggle="modal"

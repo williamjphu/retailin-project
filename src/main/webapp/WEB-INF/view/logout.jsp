@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <footer class="sticky-footer">
 	<div class="container">
 		<div class="text-center">
@@ -25,10 +26,7 @@
 				to end your current session.</div>
 			<div class="modal-footer">
 				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-				<form action="logout" method="POST">
-					<input class="btn btn-primary" type="submit" value="Logout" /> <input
-						type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				</form>
+				<a class="btn btn-primary" href="<c:url value="/logout" />">Logout</a>
 			</div>
 		</div>
 	</div>

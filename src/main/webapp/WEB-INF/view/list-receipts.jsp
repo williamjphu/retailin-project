@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Home</title>
+<title>RetailIn Receipts</title>
 <link
 	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -73,9 +73,6 @@
 							</tbody>
 						</table>
 					</div>
-					<input type="button" value="Add receipt"
-						onclick="window.location.href='add'; return false;"
-						class="btn bg-success text-white" />
 				</div>
 			</div>
 		</div>

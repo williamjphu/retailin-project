@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Home</title>
+<title>RetailIn Employees</title>
 <link
 	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -26,7 +26,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 	<!-- Navigation-->
-	<jsp:include page="menu.jsp"/>
+	<jsp:include page="menu.jsp" />
 	<!-- Content -->
 	<div class="content-wrapper">
 		<div class="container-fluid">
@@ -35,6 +35,19 @@
 					<i class="fa fa-table"></i> Employee Data
 				</div>
 				<div class="card-body">
+					<!-- Search bar -->
+					<div>
+						<form>
+							<div class="row">
+								<div class="form-group">
+									<input placeholder="Search" class="form-control">
+								</div>
+								<div class="form-group">
+									<input type="submit" value="Search" class="btn btn-secondary">
+								</div>
+							</div>
+						</form>
+					</div>
 					<div class="table-responsive">
 						<table class="table table-bordered" id="dataTable" width="100%"
 							cellspacing="0">
@@ -84,11 +97,10 @@
 							</tbody>
 						</table>
 					</div>
-					<input type="button" value="Add User"
-						onclick="window.location.href='addUser'; return false;"
-						class="btn bg-success text-white" /> <a
+					<a href="${pageContext.request.contextPath}/user/addUser"
+						class="btn bg-success text-white">Add Employee</a> <a
 						href="${pageContext.request.contextPath}/department/list"
-						class="btn bg-success text-white">View/Edit Category</a> <a
+						class="btn bg-success text-white">View/Edit Department</a> <a
 						href="${pageContext.request.contextPath}/payroll/list"
 						class="btn bg-success text-white">View/Edit Payroll</a> <a
 						href="${pageContext.request.contextPath}/bank-account/list"

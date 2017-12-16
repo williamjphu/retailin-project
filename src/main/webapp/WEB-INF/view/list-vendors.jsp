@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Home</title>
+<title>RetailIn Vendors</title>
 <link
 	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -76,9 +76,8 @@
 							</tbody>
 						</table>
 					</div>
-					<input type="button" value="Add vendor"
-						onclick="window.location.href='add'; return false;"
-						class="btn bg-success text-white" />
+					<a href="${pageContext.request.contextPath}/vendor/add"
+						class="btn bg-success text-white">Add Vendor</a>
 				</div>
 			</div>
 		</div>

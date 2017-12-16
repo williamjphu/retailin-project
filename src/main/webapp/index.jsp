@@ -107,10 +107,42 @@
 						</div>
 					</div>
 				</sec:authorize>
-				<a href="${pageContext.request.contextPath}/receipt/list">Go to
-					receipts</a><br>
-				<br> <a href="${pageContext.request.contextPath}/vendor/list">Go
-					to vendors</a>
+				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
+					<div class="card text-white bg-secondary o-hidden h-100">
+						<a href="${pageContext.request.contextPath}/receipt/list"
+							class="text-white">
+							<div class="card-body">
+								<div class="card-body-icon">
+									<i class="fa fa-fw fa-dollar"></i>
+								</div>
+								<div class="mr-5">RECEIPTS</div>
+							</div>
+							<div class="card-footer clearfix small z-1">
+								<span class="float-left">View customer receipts</span> <span
+									class="float-right"> <i class="fa fa-angle-right"></i>
+								</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
+					<div class="card text-white bg-info o-hidden h-100">
+						<a href="${pageContext.request.contextPath}/vendor/list"
+							class="text-white">
+							<div class="card-body">
+								<div class="card-body-icon">
+									<i class="fa fa-fw fa-truck"></i>
+								</div>
+								<div class="mr-5">VENDORS</div>
+							</div>
+							<div class="card-footer clearfix small z-1">
+								<span class="float-left">Manage vendor details</span> <span
+									class="float-right"> <i class="fa fa-angle-right"></i>
+								</span>
+							</div>
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- /.container-fluid-->

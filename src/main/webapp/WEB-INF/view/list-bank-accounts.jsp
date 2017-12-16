@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Home</title>
+<title>RetailIn Bank Accounts</title>
 <link
 	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -32,7 +32,7 @@
 		<div class="container-fluid">
 			<div class="card mb-3">
 				<div class="card-header">
-					<i class="fa fa-table"></i>Bank Account info
+					<i class="fa fa-table"></i>Bank Account Data
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
@@ -79,9 +79,8 @@
 							</tbody>
 						</table>
 					</div>
-					<input type="button" value="Add Bank"
-						onclick="window.location.href='add'; return false;"
-						class="btn bg-success text-white" />
+					<a href="${pageContext.request.contextPath}/bank-account/add"
+						class="btn bg-success text-white">Add Bank Account</a>
 				</div>
 			</div>
 		</div>
