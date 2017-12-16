@@ -8,22 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Employee Information</title>
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<title>RetailIn - Employee Information</title>
+<!-- Resources link -->
+<jsp:include page="resources.jsp" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -35,7 +22,7 @@
 			<div class="card card-register mx-auto mt-5">
 				<div class="card-header">Employee Information Form</div>
 				<div class="card-body">
-					<form:form action="saveUser" modelAttribute="user" method="POST">
+					<form:form action="save" modelAttribute="user" method="POST">
 						<form:hidden path="empID" />
 						<div class="form-group">
 							<div class="form-row">
@@ -53,7 +40,7 @@
 						</div>
 						<div class="form-group">
 							<div class="form-row">
-								<div class="col-md-14">
+								<div class="col-md-6">
 									<label for="password1">Password</label>
 									<form:input path="password" class="form-control" id="password"
 										type="password" placeholder="Password" />
@@ -70,7 +57,7 @@
 								<div class="col-md-6">
 									<label for="lastName">Phone Number</label>
 									<form:input path="phoneNumber" class="form-control"
-										id="phoneNumber" type="text" placeholder="Enter phone number" />
+										id="phoneNumber" type="text" placeholder="Enter phone number" maxLength="10"/>
 								</div>
 							</div>
 						</div>

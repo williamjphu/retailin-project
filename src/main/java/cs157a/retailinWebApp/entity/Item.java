@@ -8,6 +8,7 @@ public class Item {
 	private int discount;
 	private int quantity;
 	private int categoryID;
+	private int vendorID;
 	
 	public Item() {
 		// TODO Auto-generated constructor stub
@@ -71,5 +72,13 @@ public class Item {
 
 	public void setCategoryID(int categoryID) {
 		this.categoryID = categoryID;
+	}
+
+	public int getVendorID() {
+		return vendorID;
+	}
+
+	public void setVendorID(int vendorID) {
+		this.vendorID = vendorID;
 	}
 }

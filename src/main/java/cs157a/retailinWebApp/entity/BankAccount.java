@@ -2,13 +2,14 @@ package cs157a.retailinWebApp.entity;
 
 public class BankAccount {
 	private int acctID;
-	private int acctNumber;
-	private int routingNumber;
+	private long acctNumber;
+	private long routingNumber;
 	private String acctType;
 	private String bankName;
 	private String bankAddress;
 	private String bankCity;
 	private String bankState;
+	private int zipCode;
 	private int empID;
 	
 	public BankAccount() {
@@ -27,19 +28,19 @@ public class BankAccount {
 		this.acctID = acctID;
 	}
 
-	public int getAcctNumber() {
+	public long getAcctNumber() {
 		return acctNumber;
 	}
 
-	public void setAcctNumber(int acctNumber) {
+	public void setAcctNumber(long acctNumber) {
 		this.acctNumber = acctNumber;
 	}
 
-	public int getRoutingNumber() {
+	public long getRoutingNumber() {
 		return routingNumber;
 	}
 
-	public void setRoutingNumber(int routingNumber) {
+	public void setRoutingNumber(long routingNumber) {
 		this.routingNumber = routingNumber;
 	}
 
@@ -81,6 +82,14 @@ public class BankAccount {
 
 	public void setBankState(String bankState) {
 		this.bankState = bankState;
+	}
+	
+	public int getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(int zipCode) {
+		this.zipCode = zipCode;
 	}
 
 	public int getEmpID() {

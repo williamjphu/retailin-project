@@ -49,17 +49,22 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void addUser(User user) {
-		String sql = "INSERT INTO users(username, last_name, first_name, password, email, phone_number, enabled, authority, department_id) "
-				+ "VALUES(:username, :last_name, :first_name, :password, :email, :phone_number, :enabled, :authority, :department_id)";
+		String sql = "INSERT INTO users(username, last_name, first_name, password, email, "
+				+ "phone_number, enabled, authority, department_id) "
+				+ "VALUES(:username, :last_name, :first_name, :password, :email, "
+				+ ":phone_number, :enabled, :authority, :department_id)";
 		namedParameter.update(sql, getSqlParameterByModel(user));
-		String sql2 = "INSERT INTO authorites(username, authority) VALUES(:username, :authority)";
+		String sql2 = "INSERT INTO authorities(username, authority) SELECT username, authority "
+				+ "FROM users ORDER BY username DESC LIMIT 1";
 		namedParameter.update(sql2, getSqlParameterByModel(user));
 	}
 	
 	@Override
 	public void updateUser(User user) {
-		String sql = "UPDATE users SET last_name = :last_name, first_name = :first_name, password = :password, email = :email, "
-				+ "phone_number = :phone_number, enabled = :enabled, authority = :authority, department_id = :department_id "
+		String sql = "UPDATE users SET last_name = :last_name, first_name = :first_name, "
+				+ "password = :password, email = :email, "
+				+ "phone_number = :phone_number, enabled = :enabled, authority = :authority, "
+				+ "department_id = :department_id "
 				+ "WHERE username = :username";
 		namedParameter.update(sql, getSqlParameterByModel(user));
 		String sql2 = "UPDATE authorities SET authority = :authority WHERE username = :username";
@@ -68,8 +73,10 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void deleteUser(Integer empID) {
-		String sql = "DELETE FROM items where item_name = :item_name";
+		String sql = "DELETE FROM authorities WHERE username = :username";
 		namedParameter.update(sql, getSqlParameterByModel(new User(empID)));
+		String sql2 = "DELETE FROM users WHERE username = :username";
+		namedParameter.update(sql2, getSqlParameterByModel(new User(empID)));
 	}
 	
 	@Override

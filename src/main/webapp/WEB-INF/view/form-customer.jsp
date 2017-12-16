@@ -1,27 +1,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Customer Information</title>
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<title>RetailIn - Customer Form</title>
+<!-- Resources link -->
+<jsp:include page="resources.jsp" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -42,26 +27,26 @@
 									<label for="phoneNumber">Phone number</label>
 									<form:input path="phoneNumber" class="form-control"
 										id="phoneNumber" type="text"
-										placeholder="Enter your phone number" />
+										placeholder="Enter your phone number" maxlength="10" required="required"/>
 								</div>
 								<div class="col-md-6">
 									<label for="lastName">Last name</label>
 									<form:input path="lastName" class="form-control" id="lastName"
-										type="text" placeholder="Enter last name" />
+										type="text" placeholder="Doe" />
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="form-row">
-								<div class="col-md-14">
+								<div class="col-md-6">
 									<label for="firstName">First Name</label>
 									<form:input path="firstName" class="form-control"
-										id="firstName" type="text" placeholder="Enter first name" />
+										id="firstName" type="text" placeholder="Jane" />
 								</div>
 								<div class="col-md-6">
 									<label for="zipCode">Zip Code</label>
 									<form:input path="zipCode" class="form-control" id="zipCode"
-										type="text" placeholder="Enter zipcode" />
+										type="text" maxlength="5"/>
 								</div>
 							</div>
 						</div>
@@ -70,7 +55,7 @@
 								<div class="col-md-6">
 									<label for="firstName">Email</label>
 									<form:input path="email" class="form-control" id="email"
-										type="text" placeholder="Enter email" />
+										type="email" placeholder="retailin@retailin.com" />
 								</div>
 
 							</div>

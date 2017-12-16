@@ -1,38 +1,24 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RetailIn Receipts</title>
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Resources link -->
+<jsp:include page="resources.jsp" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 	<!-- Navigation-->
-	<jsp:include page="menu.jsp"/>
+	<jsp:include page="menu.jsp" />
 	<!-- Content -->
 	<div class="content-wrapper">
 		<div class="container-fluid">
 			<div class="card mb-3">
 				<div class="card-header">
-					<i class="fa fa-table"></i>Receipts Data
+					<i class="fa fa-table"></i> Receipts Data
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
@@ -60,12 +46,14 @@
 									<tr>
 										<td>${receipt.transactionNo}</td>
 										<td>${receipt.timestamp}</td>
-										<td>${receipt.total}</td>
+										<td><fmt:formatNumber pattern="0.00"
+												value="${receipt.total}" /></td>
 										<td>${receipt.customerID}</td>
-										<td>${receipt.empID}</td>
+										<td><fmt:formatNumber pattern="0000000"
+												value="${receipt.empID}" /></td>
 										<td>
-											<!-- display the update link --> <a href="${updateURL}">Update</a>
-											| <a href="${deleteURL}"
+											<!-- display the update link --> <a href="${updateURL}">Update</a>|
+											<a href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this receipt?'))) return false">Delete</a>
 										</td>
 									</tr>
@@ -73,6 +61,8 @@
 							</tbody>
 						</table>
 					</div>
+					<a href="${pageContext.request.contextPath}/"
+						class="btn bg-secondary text-white">Back Home</a>
 				</div>
 			</div>
 		</div>
