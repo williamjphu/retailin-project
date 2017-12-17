@@ -1,38 +1,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Departments</title>
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<title>RetailIn - Departments</title>
+<!-- Resources link -->
+<jsp:include page="resources.jsp" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 	<!-- Navigation-->
-	<jsp:include page="menu.jsp"/>
+	<jsp:include page="menu.jsp" />
 	<!-- Content -->
 	<div class="content-wrapper">
 		<div class="container-fluid">
 			<div class="card mb-3">
 				<div class="card-header">
-					<i class="fa fa-table"></i>Departments Data
+					<i class="fa fa-table"></i> Departments Data
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
@@ -63,8 +48,8 @@
 										<td>${dept.name}</td>
 										<td>${dept.description}</td>
 										<td>
-											<!-- display the update link --> <a href="${updateURL}">Update</a>
-											| <a href="${deleteURL}"
+											<!-- display the update link --> <a href="${updateURL}">Update</a>|
+											<a href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this department?'))) return false">Delete</a>
 										</td>
 									</tr>
@@ -73,7 +58,9 @@
 						</table>
 					</div>
 					<a href="${pageContext.request.contextPath}/department/add"
-						class="btn bg-success text-white">Add Department</a>
+						class="btn bg-success text-white">Add Department</a> <a
+						href="${pageContext.request.contextPath}/user/list"
+						class="btn bg-secondary text-white">Back to List</a>
 				</div>
 			</div>
 		</div>

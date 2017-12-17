@@ -1,27 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Customers</title>
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<title>RetailIn - Customers Page</title>
+<!-- Resources link -->
+<jsp:include page="resources.jsp" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -68,7 +53,6 @@
 									<c:url var="updateURL" value="/customer/update">
 										<c:param name="custID" value="${tempCustomer.customerID}" />
 									</c:url>
-
 									<!-- construct an "delete" link with customer id -->
 									<c:url var="deleteURL" value="/customer/delete">
 										<c:param name="custID" value="${tempCustomer.customerID}" />
@@ -81,9 +65,7 @@
 										<td>${tempCustomer.firstName}</td>
 										<td>${tempCustomer.email}</td>
 										<td>${tempCustomer.zipCode}</td>
-										<td>
-											<!-- display the update link --> <a href="${updateURL}">Update</a>
-											| <a href="${deleteURL}"
+										<td><a href="${updateURL}">Update</a>|<a href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
 										</td>
 									</tr>
@@ -92,7 +74,9 @@
 						</table>
 					</div>
 					<a href="${pageContext.request.contextPath}/customer/add"
-						class="btn bg-success text-white">Add Customer</a>
+						class="btn bg-success text-white">Add Customer</a> <a
+						href="${pageContext.request.contextPath}/"
+						class="btn bg-secondary text-white">Back Home</a>
 				</div>
 			</div>
 		</div>

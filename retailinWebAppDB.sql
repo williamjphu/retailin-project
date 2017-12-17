@@ -75,13 +75,15 @@ CREATE TABLE payrolls(
 -- One user have many bank accounts
 DROP TABLE IF EXISTS bank_accounts;
 CREATE TABLE bank_accounts (
-	acct_no int(20) NOT NULL PRIMARY KEY,
+	acct_id int(8) AUTO_INCREMENT PRIMARY KEY,
+	acct_no int(20) NOT NULL,
     routing_no int(20) NOT NULL,
-    acct_type varchar(12) NOT NULL,
-    bank_name varchar(32) NOT NULL,
+    acct_type varchar(16) NOT NULL,
+    bank_name varchar(55) NOT NULL,
     bank_addr varchar(55) NOT NULL,
-    bank_city varchar(10) NOT NULL,
-    bank_state varchar(20) NOT NULL,
+    bank_city varchar(55) NOT NULL,
+    bank_state varchar(55) NOT NULL,
+    zip_code int(6) NOT NULL,
     emp_id int(8) ZEROFILL NOT NULL,
     CONSTRAINT fk_bankAccounts_users FOREIGN KEY(emp_id) REFERENCES users(username)
 ) DEFAULT CHARSET=utf8;
@@ -128,13 +130,16 @@ CREATE TABLE categories (
 -- Many receipts are in many items
 DROP TABLE IF EXISTS items;
 CREATE TABLE items (
-    item_name varchar(32) NOT NULL PRIMARY KEY,
+	item_id int(5) AUTO_INCREMENT PRIMARY KEY,
+    item_name varchar(32) NOT NULL,
     description varchar(64) NOT NULL,
-	price int(5) NOT NULL,
+	price decimal(8,2) NOT NULL,
     discount int(3) NOT NULL,
     quantity int(5) NOT NULL,
     category_id int(5) NOT NULL,
-    CONSTRAINT fk_items_categories FOREIGN KEY(category_id) REFERENCES categories(category_id)
+	vendor_id int(8) NOT NULL,
+    CONSTRAINT fk_items_categories FOREIGN KEY(category_id) REFERENCES categories(category_id),
+    CONSTRAINT fk_items_vendors FOREIGN KEY(vendor_id) REFERENCES vendors(vendor_id)
 ) DEFAULT CHARSET=utf8;
 
 -- Table for ManyToMany
@@ -149,31 +154,17 @@ CREATE TABLE is_in (
 	CONSTRAINT fk_isIn_receipts FOREIGN KEY(transaction_no) REFERENCES receipts(transaction_no),
 	CONSTRAINT fk_isIn_items FOREIGN KEY(item_id) REFERENCES items(item_id)
 ) DEFAULT CHARSET=utf8;
-
+-- 
 -- Table for Vendor
 -- Details: ManyToMany
 -- Many vendor vend many items
 DROP TABLE IF EXISTS vendors;
 CREATE TABLE vendors (
 	vendor_id int(8) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	ein int(8) NOT NULL,
+	ein varchar(16) NOT NULL,
     name varchar(32) NOT NULL,
 	address varchar(32) NOT NULL,
     city varchar(12) NOT NULL,
     state varchar(12) NOT NULL,
     zip_code int(8) NOT NULL
-) DEFAULT CHARSET=utf8;
- 
--- Table for ManyToMany
--- Details: ManyToMany
-DROP TABLE IF EXISTS vend;
-CREATE TABLE vend (
-	vendor_id int(8) NOT NULL,
-    item_id int(5) NOT NULL,
-    date varchar(20) NOT NULL,
-    quantity int(5) NOT NULL,
-	vendor_price int(5) NOT NULL,
-    PRIMARY KEY(vendor_id, item_id),
-    CONSTRAINT fk_vend_vendors FOREIGN KEY(vendor_id) REFERENCES vendor(vendor_id),
-    CONSTRAINT fk_vend_items FOREIGN KEY(item_id) REFERENCES items(item_id)
 ) DEFAULT CHARSET=utf8;

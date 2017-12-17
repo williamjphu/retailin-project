@@ -22,7 +22,6 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
 	@Autowired
 	private DepartmentService deptService;
 	
@@ -33,29 +32,26 @@ public class UserController {
 		return "list-users";
 	}
 	
-	@GetMapping("/addUser")
-	public String addUser(Model theModel) {
-		// create model attribute to bind form data
+	@GetMapping("/add")
+	public String add(Model theModel) {
 		User user = new User();
 		theModel.addAttribute("user", user);
-		
 		List<Department> depts = deptService.listDepartments();
 		theModel.addAttribute("listDepartments", depts);
-		return "user-form";
+		return "form-user";
 	}
 	
-	@GetMapping("/updateEmployee")
+	@GetMapping("/update")
 	public String updateUser(@RequestParam("employeeID") Integer empID, Model theModel) {
 		User theUser = userService.getUserById(empID);	
 		theModel.addAttribute("user", theUser);
-		
 		List<Department> depts = deptService.listDepartments();
 		theModel.addAttribute("listDepartments", depts);
-		return "user-form";
+		return "form-user";
 	}
 	
-	@PostMapping("/saveUser")
-	public String saveUser(@ModelAttribute("user") User theUser) {
+	@PostMapping("/save")
+	public String save(@ModelAttribute("user") User theUser) {
 		if (theUser.getEmpID() < 1) {
 			userService.addUser(theUser);
 		} else {
@@ -64,9 +60,8 @@ public class UserController {
 		return "redirect:/user/list";
 	}
 
-	@GetMapping("/deleteEmployee")
+	@GetMapping("/delete")
 	public String deleteUser(@RequestParam("employeeID") Integer empID) {
-		// delete the customer
 		userService.deleteUser(empID);
 		return "redirect:/user/list";
 	}

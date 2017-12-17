@@ -13,24 +13,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import cs157a.retailinWebApp.entity.Category;
 import cs157a.retailinWebApp.entity.Item;
+import cs157a.retailinWebApp.entity.Vendor;
 import cs157a.retailinWebApp.service.CategoryService;
 import cs157a.retailinWebApp.service.ItemService;
+import cs157a.retailinWebApp.service.VendorService;
 
 @Controller
 @RequestMapping("/item")
 public class ItemController {
-	
 	@Autowired
 	private ItemService itemService;
 	@Autowired
 	private CategoryService categoryServ;
+	@Autowired
+	private VendorService vendorServ;
 	
 	@GetMapping("/list")
 	public String listItems(Model theModel) {
 		List<Item> items = itemService.getItems();
 		theModel.addAttribute("listItems", items);
-		List<Category> categories = categoryServ.listCategories();
-		theModel.addAttribute("listCategories", categories);
 		return "list-items";
 	}
 	
@@ -38,7 +39,11 @@ public class ItemController {
 	public String add(Model theModel) {
 		Item it = new Item();
 		theModel.addAttribute("itemForm", it);
-		return "item-form";
+		List<Category> categories = categoryServ.listCategories();
+		theModel.addAttribute("listCategories", categories);
+		List<Vendor> vendors = vendorServ.listVendors();
+		theModel.addAttribute("listVendors", vendors);
+		return "form-item";
 	}
 	
 	@GetMapping("/update")
@@ -47,7 +52,9 @@ public class ItemController {
 		theModel.addAttribute("itemForm", it);
 		List<Category> categories = categoryServ.listCategories();
 		theModel.addAttribute("listCategories", categories);
-		return "item-form";
+		List<Vendor> vendors = vendorServ.listVendors();
+		theModel.addAttribute("listVendors", vendors);
+		return "form-item";
 	}
 	
 	@PostMapping("/save")

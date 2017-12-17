@@ -6,27 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Vendors</title>
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<title>RetailIn - Vendors</title>
+<!-- Resources link -->
+<jsp:include page="resources.jsp" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 	<!-- Navigation-->
-	<jsp:include page="menu.jsp"/>
+	<jsp:include page="menu.jsp" />
 	<!-- Content -->
 	<div class="content-wrapper">
 		<div class="container-fluid">
@@ -51,14 +38,12 @@
 							</thead>
 							<tbody>
 								<c:forEach var="vendor" items="${listVendors}">
-
 									<c:url var="updateURL" value="/vendor/update">
 										<c:param name="vendorId" value="${vendor.vendorID}" />
 									</c:url>
 									<c:url var="deleteURL" value="/vendor/delete">
 										<c:param name="vendorId" value="${vendor.vendorID}" />
 									</c:url>
-
 									<tr>
 										<td>${vendor.ein}</td>
 										<td>${vendor.name}</td>
@@ -67,8 +52,8 @@
 										<td>${vendor.state}</td>
 										<td>${vendor.zipCode}</td>
 										<td>
-											<!-- display the update link --> <a href="${updateURL}">Update</a>
-											| <a href="${deleteURL}"
+											<!-- display the update link --> <a href="${updateURL}">Update</a>|<a
+											href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this vendor?'))) return false">Delete</a>
 										</td>
 									</tr>
@@ -77,7 +62,9 @@
 						</table>
 					</div>
 					<a href="${pageContext.request.contextPath}/vendor/add"
-						class="btn bg-success text-white">Add Vendor</a>
+						class="btn bg-success text-white">Add Vendor</a> <a
+						href="${pageContext.request.contextPath}/"
+						class="btn bg-secondary text-white">Back Home</a>
 				</div>
 			</div>
 		</div>
