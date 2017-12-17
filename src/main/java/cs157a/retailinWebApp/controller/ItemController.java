@@ -29,8 +29,23 @@ public class ItemController {
 	private VendorService vendorServ;
 	
 	@GetMapping("/list")
-	public String listItems(Model theModel) {
-		List<Item> items = itemService.getItems();
+	public String listCustomers(@RequestParam(value = "keyword", defaultValue = "") String keyword, Model theModel) {
+		List<Item> items = new java.util.ArrayList<Item>();
+		if (keyword.length() > 0) {
+			keyword = keyword.toLowerCase();
+			for(Item c : itemService.getItems()) {
+				if (	c.getItemName().toLowerCase().contains(keyword.toLowerCase()) ||
+						c.getDescription().toLowerCase().contains(keyword) ||
+						(c.getPrice() + "").toLowerCase().contains(keyword) ||
+						(c.getDiscount() + "").toLowerCase().contains(keyword)
+						) {
+					items.add(c);
+				}
+			}
+		}
+		else {
+			items = itemService.getItems();
+		}
 		theModel.addAttribute("listItems", items);
 		return "list-items";
 	}

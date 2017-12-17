@@ -26,7 +26,8 @@
 						<form>
 							<div class="row">
 								<div class="form-group">
-									<input placeholder="Search" class="form-control">
+									<input name="keyword" value="${param.keyword}"
+										placeholder="Search" type="text" class="form-control">
 								</div>
 								<div class="form-group">
 									<input type="submit" value="Search" class="btn btn-secondary">

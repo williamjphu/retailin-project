@@ -21,9 +21,25 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	@GetMapping("/list")
-	public String listCustomers(Model theModel) {
-		List<Customer> customers = customerService.listCustomers();
-		theModel.addAttribute("customers", customers);
+	public String listCustomers(@RequestParam(value = "keyword", defaultValue = "") String keyword, Model theModel) {
+		List<Customer> customersFiltered = new java.util.ArrayList<Customer>();
+		if (keyword.length() > 0) {
+			keyword = keyword.toLowerCase();
+			for(Customer c : customerService.listCustomers()) {
+				if (	c.getFirstName().toLowerCase().contains(keyword.toLowerCase()) ||
+						c.getLastName().toLowerCase().contains(keyword) ||
+						c.getEmail().toLowerCase().contains(keyword) ||
+						(c.getZipCode() + "").toLowerCase().contains(keyword) ||
+						(c.getPhoneNumber() + "").toLowerCase().contains(keyword)
+						) {
+					customersFiltered.add(c);
+				}
+			}
+		}
+		else {
+			customersFiltered = customerService.listCustomers();
+		}
+		theModel.addAttribute("customers", customersFiltered);
 		return "list-customers";
 	}
 
