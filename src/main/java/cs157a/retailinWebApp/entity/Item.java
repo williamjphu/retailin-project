@@ -18,6 +18,17 @@ public class Item {
 		this.itemID = itemID;
 	}
 
+	public Item(Item other, Integer quantity2) {
+		this.itemID = other.itemID;
+		this.itemName = other.itemName;
+		this.description = other.description;
+		this.price = other.price;
+		this.discount = other.discount;
+		this.quantity = quantity2;
+		this.categoryID = other.categoryID;
+		this.vendorID = other.vendorID;
+	}
+
 	public int getItemID() {
 		return itemID;
 	}

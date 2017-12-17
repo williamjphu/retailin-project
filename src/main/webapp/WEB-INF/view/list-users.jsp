@@ -25,7 +25,7 @@
 					<div>
 						<form>
 							<div class="row">
-								<div class="form-group">
+								<div class="form-group col col-md-6">
 									<input name="keyword" value="${param.keyword}"
 										placeholder="Search" type="text" class="form-control">
 								</div>

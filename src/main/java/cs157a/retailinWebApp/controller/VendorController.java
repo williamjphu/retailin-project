@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import cs157a.retailinWebApp.entity.Item;
 import cs157a.retailinWebApp.entity.Vendor;
-import cs157a.retailinWebApp.service.ItemService;
 import cs157a.retailinWebApp.service.VendorService;
 
 @Controller

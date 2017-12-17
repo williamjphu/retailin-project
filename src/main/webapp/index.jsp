@@ -35,7 +35,7 @@
 			<div class="row vert-offset-top-3">
 				<div class="col-xl-4 col-lg-6 col-xs-12 mb-3">
 					<div class="card text-white bg-primary o-hidden h-100">
-						<a href="${pageContext.request.contextPath}/cart"
+						<a href="${pageContext.request.contextPath}/checkout"
 							class="text-white">
 							<div class="card-body">
 								<div class="card-body-icon">
