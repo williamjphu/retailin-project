@@ -38,4 +38,9 @@ public class ItemServiceImpl implements ItemService {
 	public Item findItemById(int itemId) {
 		return itemDao.findItemById(itemId);
 	}
+
+	@Override
+	public List<Item> getItems(Integer recId) {
+		return itemDao.getItems(recId);
+	}
 }

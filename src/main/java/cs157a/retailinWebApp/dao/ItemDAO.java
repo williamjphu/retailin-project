@@ -10,4 +10,5 @@ public interface ItemDAO {
 	public void updateItem(Item item);
 	public void deleteItem(int itemId);
 	public Item findItemById(int itemId);
+	public List<Item> getItems(Integer recId);
 }

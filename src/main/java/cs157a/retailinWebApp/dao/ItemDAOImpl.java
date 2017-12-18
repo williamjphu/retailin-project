@@ -2,7 +2,9 @@ package cs157a.retailinWebApp.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -72,6 +74,15 @@ public class ItemDAOImpl implements ItemDAO {
 	public Item findItemById(int itemId) {
 		String sql = "SELECT * FROM items WHERE item_id = :item_id";
 		return namedParameter.queryForObject(sql, getSqlParameterByModel(new Item(itemId)), new ItemMapper());
+	}
+
+	@Override
+	public List<Item> getItems(Integer recId) {
+		String sql = "SELECT items.item_id, item_name, description, price, discount, is_in.quantity, category_id, vendor_id FROM (items JOIN is_in ON items.item_id = is_in.item_id) WHERE transaction_no = :transaction_no ORDER BY item_name";
+		Map<String, Integer> paramMap = new HashMap<String, Integer>();
+		paramMap.put("transaction_no", recId);
+		List<Item> items = namedParameter.query(sql, paramMap, new ItemMapper());
+		return items;
 	}
 }
 
