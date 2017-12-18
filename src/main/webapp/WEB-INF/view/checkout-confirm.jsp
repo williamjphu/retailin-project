@@ -60,14 +60,17 @@
 									</form:select>
 								</div>
 							</div>
-							<div class="form-row h4 vert-offset-top-2">
+							<div class="form-row font-weight-bold vert-offset-top-2">
 								<div class="col-md-6">
 									<label>Item Name</label>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-2">
 									<label>Quantity</label>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-2">
+									<label>Unit Price</label>
+								</div>
+								<div class="col-md-2">
 									<label>Total Price</label>
 								</div>
 							</div>
@@ -76,10 +79,14 @@
 									<div class="col-md-6">
 										<label>${item.itemName}</label>
 									</div>
-									<div class="col-md-3">
+									<div class="col-md-2">
 										<label>${item.quantity}</label>
 									</div>
-									<div class="col-md-3">
+									<div class="col-md-2">
+										<label><fmt:formatNumber pattern="0.00"
+												value="${(item.price *(100-item.discount)/100.0)}" /></label>
+									</div>
+									<div class="col-md-2">
 										<label><fmt:formatNumber pattern="0.00"
 												value="${item.quantity *(item.price *(100-item.discount)/100.0)}" /></label>
 									</div>

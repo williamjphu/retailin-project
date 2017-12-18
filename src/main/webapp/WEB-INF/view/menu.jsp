@@ -49,6 +49,8 @@
 			</a></li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a href="${pageContext.request.contextPath}/help" class="nav-link"> <i class="fa fa-fw fa-question-circle"></i>Help
+			</a></li>
 			<li class="nav-item"><a class="nav-link" data-toggle="modal"
 				data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out"></i>Logout
 			</a></li>
