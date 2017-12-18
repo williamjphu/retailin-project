@@ -24,8 +24,9 @@
 					<div>
 						<form>
 							<div class="row">
-								<div class="form-group">
-									<input placeholder="Search" class="form-control">
+								<div class="form-group col col-md-6">
+									<input name="keyword" value="${param.keyword}"
+										placeholder="Search" type="text" class="form-control">
 								</div>
 								<div class="form-group">
 									<input type="submit" value="Search" class="btn btn-secondary">
@@ -65,7 +66,8 @@
 										<td>${tempCustomer.firstName}</td>
 										<td>${tempCustomer.email}</td>
 										<td>${tempCustomer.zipCode}</td>
-										<td><a href="${updateURL}">Update</a>|<a href="${deleteURL}"
+										<td><a href="${updateURL}">Update</a>|<a
+											href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
 										</td>
 									</tr>

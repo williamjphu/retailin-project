@@ -26,8 +26,24 @@ public class UserController {
 	private DepartmentService deptService;
 	
 	@GetMapping("/list")
-	public String listCustomers(Model theModel) {
-		List<User> users = userService.getUsers();
+	public String listCustomers(@RequestParam(value = "keyword", defaultValue = "") String keyword, Model theModel) {
+		List<User> users = new java.util.ArrayList<User>();
+		if (keyword.length() > 0) {
+			keyword = keyword.toLowerCase();
+			for(User c : userService.getUsers()) {
+				if (	c.getFirstName().toLowerCase().contains(keyword.toLowerCase()) ||
+						c.getLastName().toLowerCase().contains(keyword) ||
+						c.getEmail().toLowerCase().contains(keyword) ||
+						(c.getAuthority() + "").toLowerCase().contains(keyword) ||
+						(c.getPhoneNumber() + "").toLowerCase().contains(keyword)
+						) {
+					users.add(c);
+				}
+			}
+		}
+		else {
+			users = userService.getUsers();
+		}
 		theModel.addAttribute("users", users);
 		return "list-users";
 	}

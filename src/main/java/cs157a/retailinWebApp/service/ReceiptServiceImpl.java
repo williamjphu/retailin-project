@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cs157a.retailinWebApp.dao.ReceiptDAO;
+import cs157a.retailinWebApp.entity.Item;
 import cs157a.retailinWebApp.entity.Receipt;
 
 @Service
@@ -36,6 +37,11 @@ public class ReceiptServiceImpl implements ReceiptService {
 	@Override
 	public Receipt getReceiptById(Integer receiptId) {
 		return receiptDao.getReceiptById(receiptId);
+	}
+
+	@Override
+	public void addReceipt(Receipt receipt, List<Item> items) {
+		receiptDao.addReceipt(receipt, items);
 	}
 
 }

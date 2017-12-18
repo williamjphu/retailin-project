@@ -25,8 +25,9 @@
 					<div>
 						<form>
 							<div class="row">
-								<div class="form-group">
-									<input placeholder="Search" class="form-control">
+								<div class="form-group col col-md-6">
+									<input name="keyword" value="${param.keyword}"
+										placeholder="Search" type="text" class="form-control">
 								</div>
 								<div class="form-group">
 									<input type="submit" value="Search" class="btn btn-secondary">
@@ -40,7 +41,6 @@
 							cellspacing="0">
 							<thead>
 								<tr>
-									<th>Item ID</th>
 									<th>Item name</th>
 									<th>Description</th>
 									<th>Price $</th>
@@ -63,7 +63,6 @@
 									</c:url>
 
 									<tr>
-										<td>${item.itemID}</td>
 										<td>${item.itemName}</td>
 										<td>${item.description}</td>
 										<td><fmt:formatNumber pattern="0.00"

@@ -17,7 +17,7 @@
 		<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 			<li class="nav-item" data-toggle="tooltip" data-placement="right"
 				title="Checkout"><a class="nav-link"
-				href="${pageContext.request.contextPath}/cart"> <i
+				href="${pageContext.request.contextPath}/checkout"> <i
 					class="fa fa-fw fa-shopping-cart"></i> <span class="nav-link-text">Checkout</span>
 			</a></li>
 			<li class="nav-item" data-toggle="tooltip" data-placement="right"
