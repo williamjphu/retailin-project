@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import cs157a.retailinWebApp.entity.Customer;
+import cs157a.retailinWebApp.entity.Item;
 import cs157a.retailinWebApp.entity.Receipt;
 import cs157a.retailinWebApp.entity.User;
 import cs157a.retailinWebApp.service.CustomerService;
+import cs157a.retailinWebApp.service.ItemService;
 import cs157a.retailinWebApp.service.ReceiptService;
 import cs157a.retailinWebApp.service.UserService;
 
@@ -27,6 +29,8 @@ public class ReceiptController {
 	private UserService userService;
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private ItemService itemService;
 	
 	@GetMapping("/list")
 	public String listItems(Model theModel) {
@@ -54,6 +58,8 @@ public class ReceiptController {
 		theModel.addAttribute("listEmployees", employees);
 		List<Customer> customers = customerService.listCustomers();
 		theModel.addAttribute("listCustomers", customers);
+		List<Item> items = itemService.getItems(recId);
+		theModel.addAttribute("items", items);
 		return "form-receipt";
 	}
 	
