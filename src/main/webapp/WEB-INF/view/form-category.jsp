@@ -6,27 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>RetailIn Employee Information</title>
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="${pageContext.request.contextPath}/resources/css/sb-admin.css"
-	rel="stylesheet">
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<title>RetailIn - Employee Information</title>
+<!-- Resources link -->
+<jsp:include page="resources.jsp" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 	<!-- Navigation-->
-	<jsp:include page="menu.jsp"/>
+	<jsp:include page="menu.jsp" />
 	<!-- Content -->
 	<div class="content-wrapper">
 		<div class="container-fluid">
@@ -61,6 +48,6 @@
 		</div>
 	</div>
 	<!-- Footer & Logout -->
-	<jsp:include page="logout.jsp"/>
+	<jsp:include page="logout.jsp" />
 </body>
 </html>

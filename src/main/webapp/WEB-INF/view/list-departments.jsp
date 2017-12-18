@@ -39,7 +39,7 @@
 									</c:url>
 
 									<!-- construct an "delete" link with customer id -->
-									<c:url var="deleteURL" value="/category/delete">
+									<c:url var="deleteURL" value="/department/delete">
 										<c:param name="deptId" value="${dept.deptID}" />
 									</c:url>
 

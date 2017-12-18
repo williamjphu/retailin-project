@@ -31,7 +31,7 @@ public class CategoryController {
 	public String showForm(Model theModel) {
 		Category catego = new Category();
 		theModel.addAttribute("categoryForm", catego);
-		return "category-form";
+		return "form-category";
 	}
 	
 	@PostMapping("/save")
@@ -48,7 +48,7 @@ public class CategoryController {
 	public String showFormForUpdate(@RequestParam("categoryID") int catID, Model theModel) {
 		Category cat = categoryService.getCategoryById(catID);
 		theModel.addAttribute("categoryForm", cat);
-		return "category-form";
+		return "form-category";
 	}
 	
 	@GetMapping("/delete")

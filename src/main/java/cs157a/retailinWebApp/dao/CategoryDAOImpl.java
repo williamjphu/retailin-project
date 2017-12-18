@@ -57,7 +57,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Override
 	public void deleteCategory(Integer catID) {
-		String sql = "DELETE FROM categories WHERE category = :category_id";
+		String sql = "DELETE FROM categories WHERE category_id = :category_id";
 		namedParameter.update(sql, getParameterByModel(new Category(catID)));
 	}
 
