@@ -52,7 +52,7 @@
 										<td><fmt:formatNumber pattern="0000000"
 												value="${receipt.empID}" /></td>
 										<td>
-											<!-- display the update link --> <a href="${updateURL}">Update</a>|
+											<!-- display the update link --> <a href="${updateURL}">View</a>|
 											<a href="${deleteURL}"
 											onclick="if (!(confirm('Are you sure you want to delete this receipt?'))) return false">Delete</a>
 										</td>

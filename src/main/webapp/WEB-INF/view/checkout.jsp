@@ -88,7 +88,8 @@
 									<th>---</th>
 									<th>---</th>
 									<th><fmt:formatNumber pattern="0.00" value="${total}" /></th>
-									<th>Checkout</th>
+									<th><a href="${pageContext.request.contextPath}/checkout/confirm"
+						class="btn bg-success text-white">Checkout</a></th>
 								</tr>
 							</tfoot>
 						</table>

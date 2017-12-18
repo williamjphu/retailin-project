@@ -41,7 +41,6 @@
 							cellspacing="0">
 							<thead>
 								<tr>
-									<th>Item ID</th>
 									<th>Item name</th>
 									<th>Description</th>
 									<th>Price $</th>
@@ -64,7 +63,6 @@
 									</c:url>
 
 									<tr>
-										<td>${item.itemID}</td>
 										<td>${item.itemName}</td>
 										<td>${item.description}</td>
 										<td><fmt:formatNumber pattern="0.00"
