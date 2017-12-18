@@ -60,11 +60,6 @@
 										<c:param name="employeeID" value="${user.empID}" />
 									</c:url>
 
-									<!-- construct an "delete" link with customer id -->
-									<c:url var="deleteURL" value="/user/delete">
-										<c:param name="employeeID" value="${user.empID}" />
-									</c:url>
-
 									<tr>
 										<td><fmt:formatNumber pattern="00000000" value="${user.empID}" /></td>
 										<td>${user.lastName}</td>
@@ -76,9 +71,7 @@
 										<td>${user.authority}</td>
 										<td>${user.departmentID}</td>
 										<td>
-											<!-- display the update link --> <a href="${updateURL}">Update</a>|<a
-											href="${deleteURL}"
-											onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">Delete</a>
+											<a href="${updateURL}">Update</a>
 										</td>
 									</tr>
 								</c:forEach>
