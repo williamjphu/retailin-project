@@ -26,4 +26,5 @@ Collaborative project that simulates a webpage for a retail store. The applicati
 ● JQuery
 ● XML
 
+## 
 Full information about the final report: https://drive.google.com/file/d/1w0KHF-NCS_DpDLI7nm0l1dbOOKoKDyJq/view?usp=sharing
